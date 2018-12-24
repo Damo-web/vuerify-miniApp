@@ -1,0 +1,16 @@
+<view class="audio-player-container">
+  <view class="audio-player">
+    <view class="audio-icon" catchtap="onMusicTap">
+      <image class="audio-avatar" src="https://avatar-static.segmentfault.com/102/500/1025002927-59b5cf56b90f4_huge256"></image>
+      <image class="icon-play-pause" src="{{audioInfo.isPlaying ? './image/music-stop.png': './image/music-start.png'}}"></image>
+    </view>
+    <view class="audio-info">
+      <text class="audio-title">{{audioInfo.title}}</text>
+      <progress class="progress" percent="{{percent}}" stroke-width="2" activeColor="#D00" />
+      <view class="audio-time">
+        <text class="audio-time-begin">{{currentTime|| '00:00'}}</text>
+        <text class="audio-time-end">{{duration || '00:00'}}</text>
+      </view>
+    </view>
+  </view>
+</view>

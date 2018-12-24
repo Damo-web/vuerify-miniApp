@@ -1,0 +1,5 @@
+<view class="page-body">
+ <text class='row text-center'>{{dataFromMixin}}</text>
+ <button bindtap='handler'>handler</button>
+ <button bindtap='test'>test</button>
+</view>

@@ -1,0 +1,70 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.4.1",
+	"appid": "wx6e86b9bfbbb16190",
+	"projectname": "AA-vuerify",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 4,
+			"list": [
+				{
+					"id": -1,
+					"name": "watch-computed",
+					"pathName": "pages/watch-computed/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "canvas",
+					"pathName": "pages/canvas/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "mixin",
+					"pathName": "pages/mixin/index",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "store",
+					"pathName": "pages/store/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "audio",
+					"pathName": "pages/audio/index"
+				}
+			]
+		}
+	}
+}

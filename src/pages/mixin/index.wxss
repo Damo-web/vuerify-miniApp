@@ -1,0 +1,5 @@
+.canvas {
+  width: 305px;
+  height: 505px;
+  background-color: #fff;
+}

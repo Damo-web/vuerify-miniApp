@@ -1,0 +1,27 @@
+<view class="container">
+    <view class='count row flex-center'>
+        <h3>总共: {{props.todos.totalCount}}</h3>
+        <h3>, 当前: {{props.todos.currentCount}}</h3>
+    </view>
+  <view class="filters">
+    <text
+      wx:for="{{props.todos.filters}}"
+      wx:key="{{item.key}}"
+      bindtap="applyFilter"
+      data-key="{{item.key}}"
+      class="{{props.todos.filter == item.key ? 'active' : ''}}"
+    >{{item.text}}</text>
+  </view>
+
+  <view class="todos">
+    <view wx:for="{{props.todos.filterTodos}}" wx:key="{{item.id}}">
+      <view bindtap="handleCheck" class="todo-item {{item.completed ? 'completed' : ''}}" data-id="{{item.id}}">
+        <icon catchtap="handleCheck" data-id="{{item.id}}" type="{{item.completed ? 'success_circle' : 'circle'}}" size="18"/> {{item.ids}}
+      </view>
+    </view>
+  </view>
+
+  <view class="add-todo" bindsubmit="addTodo">
+    <input name="todo" class="todo-input" placeholder="请输入新项..." bindconfirm='addTodo' value='{{title}}' />
+  </view>
+</view>

@@ -1,0 +1,26 @@
+{
+  "pages": [
+    "pages/watch-computed/index",
+    "pages/store/index",
+    "pages/audio/index",
+    "pages/mixin/index",
+    "pages/canvas/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "小程序项目测试",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "dark"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false,
+  "navigateToMiniProgramAppIdList": [
+    "wxdd8aa30076b02944",
+    "wx32f00376fddf6b44"
+  ]
+}

@@ -1,0 +1,5 @@
+ {
+   "usingComponents": {
+     "audio-player": "/Component/audio-player/audio-player"
+   }
+ }

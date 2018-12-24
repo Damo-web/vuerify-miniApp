@@ -1,0 +1,3 @@
+<view class="page-body">
+    <audio-player id="{{node.id}}" node="{{node}}" bindcustomevent="nodeDateTransporter" />
+</view>

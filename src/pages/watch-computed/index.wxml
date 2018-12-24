@@ -1,0 +1,10 @@
+
+<ul class='container'>
+  <li class='row'>{{ test }}--raw</li>
+  <li class='row'>{{ test1 }}</li>
+  <li class='row'>{{ test2 }}</li>
+  <li class='row'>{{ test3 }}</li>
+  <li class='row'>{{ test4 }}</li>
+</ul>
+
+<button bindtap="changeTest" type='primary'>change</button>

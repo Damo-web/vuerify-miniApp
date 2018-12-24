@@ -1,0 +1,8 @@
+  <view
+    class="container scroll-view"
+    style="height:{{height}}rpx"
+    bindtouchstart="onTouchStart"
+    bindtouchend="onTouchEnd"
+    >
+    <slot />
+  </view>
