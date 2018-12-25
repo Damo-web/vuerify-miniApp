@@ -6,7 +6,18 @@ import Todo from './todo'
 
 function TodoStore() {
   extendObservable(this, {
-    todos: ['引入前端工程化工具（目前gulp），使npm可用，改善开发体验。', 'promise化成功失败回调', 'canvas绘图，封装成AOP风格', 'mixin 扩展', 'watch 添加', 'computed 添加', 'store 引入， 计划引入mobx', 'filter 引入， todo', '常用组件[上拉加载， 音频，，，]'].map(title => new Todo(title)),
+    todos: [
+      '引入前端工程化工具（目前gulp）,使npm可用，改善开发体验。',
+      'promise化成功失败回调',
+      'canvas绘图，封装成AOP风格',
+      'mixin 扩展',
+      'watch 添加',
+      'computed 添加',
+      'store 引入， 计划引入mobx',
+      '手动实现sub-pub模式的页面通讯',
+      'filter 引入， todo',
+      '常用组件[上拉加载， 音频，，，]'
+    ].map(title => new Todo(title)),
     filters: [{
       key: 'SHOW_ALL',
       text: '全部'
