@@ -8,7 +8,7 @@ import runSequence from 'run-sequence';
 import inquirer from 'inquirer';
 import generatePage from 'generate-weapp-page';
 import stripDebug from 'gulp-strip-debug';
-
+import ts from 'gulp-typescript'
 // load all gulp plugins
 const plugins = gulpLoadPlugins();
 const env = process.env.NODE_ENV || 'development';
@@ -27,6 +27,17 @@ gulp.task('lint', () => {
     .pipe(plugins.eslint())
     .pipe(plugins.eslint.format('node_modules/eslint-friendly-formatter'))
     .pipe(plugins.eslint.failAfterError());
+});
+/**
+ * Compile ts source to distribution directory
+ */
+gulp.task('compile:ts', () => {
+  return gulp.src(['src/**/*.ts'])
+    .pipe(ts({
+        noImplicitAny: true,
+        outFile: 'output.js'
+      }))
+    .pipe(gulp.dest('dist'));
 });
 
 /**
@@ -121,6 +132,7 @@ gulp.task('compile:img', () => {
  */
 gulp.task('compile', ['clean'], next => {
   runSequence([
+    'compile:ts',
     'compile:js',
     // 'compile:xml',
     'compile:less',
@@ -160,6 +172,7 @@ gulp.task('deploy', function () {
  * Watch source change
  */
 gulp.task('watch', ['build'], () => {
+  gulp.watch('src/**/*.ts', ['compile:ts']);
   gulp.watch('src/**/*.js', ['compile:js']);
   gulp.watch('src/**/*.xml', ['compile:xml']);
   gulp.watch('src/**/*.less', ['compile:less']);

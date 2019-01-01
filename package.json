@@ -37,6 +37,8 @@
     "del": "^3.0.0",
     "generate-weapp-page": "^0.1.3",
     "gulp-strip-debug": "^3.0.0",
-    "run-sequence": "^2.2.1"
+    "gulp-typescript": "^5.0.0",
+    "run-sequence": "^2.2.1",
+    "typescript": "^3.2.2"
   }
 }
