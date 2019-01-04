@@ -29,18 +29,6 @@ gulp.task('lint', () => {
     .pipe(plugins.eslint.failAfterError());
 });
 /**
- * Compile ts source to distribution directory
- */
-gulp.task('compile:ts', () => {
-  return gulp.src(['src/**/*.ts'])
-    .pipe(ts({
-        noImplicitAny: true,
-        outFile: 'output.js'
-      }))
-    .pipe(gulp.dest('dist'));
-});
-
-/**
  * Compile js source to distribution directory
  */
 gulp.task('compile:js', () => {
@@ -132,7 +120,6 @@ gulp.task('compile:img', () => {
  */
 gulp.task('compile', ['clean'], next => {
   runSequence([
-    'compile:ts',
     'compile:js',
     // 'compile:xml',
     'compile:less',
