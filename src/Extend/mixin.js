@@ -1,6 +1,3 @@
-/**
- * @yanli
- */
 const extendedPage = Page
 Page = options => {
   const mixins = options.mixins

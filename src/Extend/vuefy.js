@@ -1,28 +1,28 @@
 function watch(ctx, obj) {
-    Object.keys(obj).forEach(key => {
-        reactComputed(ctx.data, key, ctx.data[key], function (value) {
-            obj[key].call(ctx, value)
-        })
+  Object.keys(obj).forEach(key => {
+    reactComputed(ctx.data, key, ctx.data[key], function (value) {
+      obj[key].call(ctx, value)
     })
+  })
 }
 
 function computed(ctx, obj) {
-    let targetKeys = Object.keys(obj)
-    let keys = Object.keys(ctx.data)
-    keys.forEach(key => {
-        reactComputed(ctx.data, key, ctx.data[key])
-    })
-    let computedTarget = targetKeys.reduce((prev, next) => {
-        ctx.data.$target = function () {
-            ctx.setData({
-                [next]: obj[next].call(ctx)
-            })
-        }
-        prev[next] = obj[next].call(ctx)
-        ctx.data.$target = null
-        return prev
-    }, {})
-    ctx.setData(computedTarget)
+  let targetKeys = Object.keys(obj)
+  let keys = Object.keys(ctx.data)
+  keys.forEach(key => {
+    reactComputed(ctx.data, key, ctx.data[key])
+  })
+  let computedTarget = targetKeys.reduce((prev, next) => {
+    ctx.data.$target = function () {
+      ctx.setData({
+        [next]: obj[next].call(ctx)
+      })
+    }
+    prev[next] = obj[next].call(ctx)
+    ctx.data.$target = null
+    return prev
+  }, {})
+  ctx.setData(computedTarget)
 }
 /*
 相较于之前，增加了几行代码，我们声明了一个变量来保存所有在变化时需要执行的函数，在 set 时执行每一个函数，因为此时 this.data.test 的值还未改变，使用 setTimeout 在下一轮再执行。现在就有一个问题，怎么将函数添加到 subs 中。不知道各位还是否记得上面我们说到的在 reduce 里的那两行代码。
@@ -39,32 +39,32 @@ function computed(ctx, obj) {
 */
 
 function reactComputed(data, key, val, fn) {
-    let subs = data['$' + key] || []
-    Object.defineProperty(data, key, {
-        configurable: true,
-        enumerable: true,
-        get() {
-            if (data.$target) {
-                subs.push(data.$target)
-                data['$' + key] = subs
-            }
-            return val
-        },
-        set(newVal) {
-            if (newVal === val) return
-            fn && fn(newVal)
-            if (subs.length) {
-                // 用 microtask 因为此时 this.data 还没更新
-                Promise.resolve().then(res => {
-                    subs.forEach(sub => sub())
-                })
-            }
-            val = newVal
-        },
-    })
+  let subs = data['$' + key] || []
+  Object.defineProperty(data, key, {
+    configurable: true,
+    enumerable: true,
+    get() {
+      if (data.$target) {
+        subs.push(data.$target)
+        data['$' + key] = subs
+      }
+      return val
+    },
+    set(newVal) {
+      if (newVal === val) return
+      fn && fn(newVal)
+      if (subs.length) {
+        // 用 microtask 因为此时 this.data 还没更新
+        Promise.resolve().then(res => {
+          subs.forEach(sub => sub())
+        })
+      }
+      val = newVal
+    },
+  })
 }
 
 export {
-    watch,
-    computed
+  watch,
+  computed
 }

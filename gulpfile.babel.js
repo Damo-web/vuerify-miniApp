@@ -8,7 +8,7 @@ import runSequence from 'run-sequence';
 import inquirer from 'inquirer';
 import generatePage from 'generate-weapp-page';
 import stripDebug from 'gulp-strip-debug';
-import ts from 'gulp-typescript'
+// import ts from 'gulp-typescript'
 // load all gulp plugins
 const plugins = gulpLoadPlugins();
 const env = process.env.NODE_ENV || 'development';
