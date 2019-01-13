@@ -23,10 +23,6 @@ Page(observer({
         this.props.todos.filter = e.target.dataset.key
     }),
 
-    todosFiltered() {
-        return this.props.todos.filterBy()
-    },
-
     addTodo(e) {
         const title = e.detail.value
         if (!title) {
