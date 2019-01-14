@@ -2,6 +2,7 @@
   "pages": [
     "pages/watch-computed/index",
     "pages/store/index",
+    "pages/store-1/index",
     "pages/audio/index",
     "pages/mixin/index",
     "pages/canvas/index"

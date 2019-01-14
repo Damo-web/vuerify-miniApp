@@ -1,4 +1,7 @@
 <view class="container">
+  <view bindtap='handleSeconds' style="color:{{props.globalStore.color}}">
+    {{props.globalStore.seconds}}
+  </view>
     <view class='count row flex-center'>
         <h3>总共: {{props.todos.totalCount}}</h3>
         <h3>, 当前: {{props.todos.currentCount}}</h3>
@@ -24,5 +27,5 @@
   <view class="add-todo" bindsubmit="addTodo">
     <input name="todo" class="todo-input" placeholder="请输入新项..." bindconfirm='addTodo' value='{{title}}' />
   </view>
-  <button bindtap='go'>go store-1</button>
+
 </view>

@@ -6,18 +6,30 @@ import {
   action
 } from '../../vendor/mobx'
 import todos from '../../store/todos/index'
+import globalStore from '../../store/hello/index'
 Page(observer({
   props: {
     todos,
+    globalStore
   },
   data: {
-    title: ''
+    title: '',
+  },
+  onLoad() {
+    let that = this
+    setInterval(r => {
+      that.handleSeconds()
+    }, 1000)
   },
 
   handleCheck(e) {
     let todoId = parseInt(e.target.dataset.id)
     let status = this.props.todos.findByTodoId(todoId).completed
     this.props.todos.findByTodoId(todoId).completed = !status
+  },
+
+  handleSeconds() {
+    this.props.globalStore.tick()
   },
 
   applyFilter: action(function (e) {
@@ -38,10 +50,5 @@ Page(observer({
     this.setData({
       title: ''
     })
-  },
-  go(){
-     wx.navigateTo({
-       url: '/pages/store-1/index',
-     })
   }
 }))

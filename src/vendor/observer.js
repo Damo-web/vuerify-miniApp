@@ -6,7 +6,7 @@ import {
   isObservableObject,
   isObservableValue,
   isObservableMap,
-} from '../vendor/mobx'
+} from './mobx'
 
 function _mergeGetterValue(res, object) {
   Object.getOwnPropertyNames(object).forEach(function (propertyName) {
