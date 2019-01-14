@@ -33,6 +33,7 @@ function toJS(source, detectCycles, __alreadySeen) {
       __alreadySeen.push([source, value]);
     return value;
   }
+
   if (isObservable(source)) {
     if (detectCycles && __alreadySeen === null)
       __alreadySeen = [];
