@@ -6,7 +6,8 @@ import hello from '../../store/hello/index'
 import person from '../../store/person'
 import personObject from '../../store/personObject'
 import todos2 from '../../store/todos2'
-import counter from '../../store/reaction'
+import reaction from '../../store/reaction'
+import whener from '../../store/when'
 
 Page(observer({
   props: {
@@ -15,7 +16,8 @@ Page(observer({
     person,
     personObject,
     todos2,
-    counter
+    reaction,
+    whener
   },
   data: {
     title: '',

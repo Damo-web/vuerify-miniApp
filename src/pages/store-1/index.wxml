@@ -5,7 +5,9 @@
 
   <view>{{props.person.fullName}} {{props.person.firstName}}</view>
 
-  <mark>counter.count:{{props.counter.count}}</mark>
+  <view>counter.count:{{props.reaction.count}}</view>
+
+  <view>whener:{{props.whener.age}}</view>
 
   <view>
     <view wx:key="{{item.title}}" wx:for='{{props.todos2}}'>{{item.title}}</view>
