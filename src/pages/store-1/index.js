@@ -1,40 +1,35 @@
 import {
   observer
-}
-from '../../vendor/observer'
-import {
-  action
-} from '../../vendor/mobx'
+} from '../../vendor/observer'
 import todos from '../../store/todos/index'
-import globalStore from '../../store/hello/index'
+import hello from '../../store/hello/index'
+import person from '../../store/person'
+import personObject from '../../store/personObject'
+import todos2 from '../../store/todos2'
+import counter from '../../store/reaction'
+
 Page(observer({
   props: {
     todos,
-    globalStore
+    hello,
+    person,
+    personObject,
+    todos2,
+    counter
   },
   data: {
     title: '',
   },
   onLoad() {
-    let that = this
-    setInterval(r => {
-      that.handleSeconds()
-    }, 1000)
-  },
-
-  handleCheck(e) {
-    let todoId = parseInt(e.target.dataset.id)
-    let status = this.props.todos.findByTodoId(todoId).completed
-    this.props.todos.findByTodoId(todoId).completed = !status
+    // let that = this
+    // setInterval(r => {
+    //   that.handleSeconds()
+    // }, 1000)
   },
 
   handleSeconds() {
-    this.props.globalStore.tick()
+    this.props.hello.tick()
   },
-
-  applyFilter: action(function (e) {
-    this.props.todos.filter = e.target.dataset.key
-  }),
 
   addTodo(e) {
     const title = e.detail.value

@@ -1,8 +1,6 @@
 import {
-  observable,
-  computed,
   action,
-  decorate,
+  autorun,
   extendObservable
 } from '../../vendor/mobx'
 
@@ -15,5 +13,15 @@ function Store() {
   })
   this.tick = action(e => this.seconds++)
 }
+const store = new Store()
+autorun(() => {
+  if (store.seconds > 1000) {
+    console.log(store.seconds)
+  }
+}, {
+  onError(e) {
+    console.error("Please debug!")
+  }
+})
 
-export default new Store
+export default store

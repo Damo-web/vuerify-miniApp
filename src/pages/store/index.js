@@ -6,12 +6,18 @@ import {
   action
 } from '../../vendor/mobx'
 import todos from '../../store/todos/index'
+import hello from '../../store/hello/index'
+hello.seconds = 100
 Page(observer({
   props: {
     todos,
+    hello
   },
   data: {
     title: ''
+  },
+  onLoad() {
+    this.props.hello.seconds = 1000
   },
 
   handleCheck(e) {
@@ -39,9 +45,9 @@ Page(observer({
       title: ''
     })
   },
-  go(){
-     wx.navigateTo({
-       url: '/pages/store-1/index',
-     })
+  go() {
+    wx.navigateTo({
+      url: '/pages/store-1/index',
+    })
   }
 }))

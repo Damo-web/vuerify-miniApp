@@ -53,4 +53,4 @@ function TodoStore() {
   this.findByTodoId = action(id => this.todos.find(element => element.id === id))
 }
 
-export default new TodoStore
+export default new TodoStore()

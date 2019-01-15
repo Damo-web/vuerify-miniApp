@@ -1,8 +1,8 @@
 <view class="container">
-    <view class='count row flex-center'>
-        <h3>总共: {{props.todos.totalCount}}</h3>
-        <h3>, 当前: {{props.todos.currentCount}}</h3>
-    </view>
+  <view class='count row flex-center'>
+      <h3>总共: {{props.todos.totalCount}}</h3>
+      <h3>, 当前: {{props.todos.currentCount}}</h3>
+  </view>
   <view class="filters">
     <text
       wx:for="{{props.todos.filters}}"
@@ -24,5 +24,5 @@
   <view class="add-todo" bindsubmit="addTodo">
     <input name="todo" class="todo-input" placeholder="请输入新项..." bindconfirm='addTodo' value='{{title}}' />
   </view>
-  <button bindtap='go'>go store-1</button>
+  <button  style="color:{{props.hello.color}}" bindtap='go'>{{props.hello.seconds}}</button>
 </view>
