@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "demo",
+  "usingComponents": {
+    "custom-test": "/Component/custom-test/index"
+  }
+}

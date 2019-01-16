@@ -3,6 +3,8 @@
     {{props.hello.seconds}}
   </view>
 
+  <custom-test test='{{props.hello.seconds}}'></custom-test>
+
   <view>{{props.person.fullName}} {{props.person.firstName}}</view>
 
   <view>counter.count:{{props.reaction.count}}</view>

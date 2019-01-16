@@ -1,0 +1,4 @@
+<view class="">
+  <view class="">custom-test {{test}}</view>
+
+</view>
