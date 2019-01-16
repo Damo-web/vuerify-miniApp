@@ -7,7 +7,8 @@ import {
   isObservableValue,
   isObservableMap,
 } from './mobx'
-
+import diff from './diff'
+// 合并getter值
 function _mergeGetterValue(res, object) {
   Object.getOwnPropertyNames(object).forEach(function (propertyName) {
     if (propertyName === "$mobx") {
@@ -19,7 +20,7 @@ function _mergeGetterValue(res, object) {
     }
   })
 }
-
+// dump observer对象
 function toJS(source, detectCycles, __alreadySeen) {
   if (detectCycles === void 0) {
     detectCycles = true;
@@ -78,23 +79,29 @@ function toJS(source, detectCycles, __alreadySeen) {
   }
   return source
 }
-
+// 扩展的小程序observer
 function observer(options) {
   var oldOnLoad = options.onLoad;
   var oldOnUnload = options.onUnload;
   options._update = function () {
-    //console.log('_update');
     var props = this.props || {};
-    this.setData({
-      props: toJS(props)
-    })
+    var diffProps = diff(toJS(props), this.data.props);
+    console.log(diffProps); //diff props
+    if (Object.keys(diffProps).length > 0) {
+      var hash = {};
+      for (var key in diffProps) {
+        var hash_key = 'props' + '.' + key;
+        hash[hash_key] = diffProps[key]
+      }
+      this.setData(hash);
+    }
   }
   options.onLoad = function () {
     var that = this
     // support observable props here
     that.props = observable(that.props)
     that._autorun = autorun(function () {
-      //console.log('autorun');
+      // console.log('autorun');
       that._update()
     })
     if (oldOnLoad) {
