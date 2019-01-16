@@ -23,10 +23,10 @@ Page(observer({
     title: '',
   },
   onLoad() {
-    // let that = this
-    // setInterval(r => {
-    //   that.handleSeconds()
-    // }, 1000)
+    let that = this
+    setInterval(r => {
+      that.handleSeconds()
+    }, 1000)
   },
 
   handleSeconds() {

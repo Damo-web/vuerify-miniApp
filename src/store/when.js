@@ -1,8 +1,8 @@
 import {
   observable,
   when,
-  action,
-  reaction
+  toJS,
+  isObservableObject
 } from '../vendor/mobx'
 
 const whener = observable({
@@ -20,6 +20,12 @@ when(
     console.log('You\'re too old now.  I\'m done watching.');
   }
 )
+
+var clone = toJS(whener);
+
+console.log(whener,isObservableObject(whener)); // true
+console.log(clone,isObservableObject(clone)); // false
+whener.age = 10
 
 setTimeout(r => {
   whener.age = 30
