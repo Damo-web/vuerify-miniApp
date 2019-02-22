@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <include file="Public:head" />
+</head>
+
+<body>
+<include file="Public:header" />
+<div id="news">
+<div class="news mar ovfl">
+<sapn class="news_sp1 left">公司主营：主要经营各种审讯专用椅<!--，适用于公安局，看守所，拘留所，戒毒所，法院，检察院，监狱等执法机关。-->   ,可以根据用户需要设计定做</sapn>
+<a href="http://wpa.qq.com/msgrd?v=3&uin={$config['qq']}&site={$config['web_url']}&menu=yes" target="_blank" class="newsa1 right"><img src="__TMPL__Public/images/qq12.jpg" alt=""/><span>在线咨询</span></a>
+</div>
+</div>
+<!--news-->
+
+<div id="about1">
+<div class="about1 mar">
+
+<div class="about left ovfl">
+<p class="about_p1">
+<a href="__APP__/article/1" class="about_a1 left"><img src="__TMPL__Public/images/about_01.jpg" alt="" /></a>
+</p>
+<a href="__APP__/article/1" class="about_a2 left"><if condition="$intro.img neq ''"><img src="__ROOT__/__UPLOAD__/m_{$intro.img}" alt="{$intro.title}"/><else /><img src="__TMPL__Public/images/about_img.jpg" alt=""/></if></a>
+<div class="about_01 left">
+   {$intro.content|strip_tags|msubstr=0,130,'utf-8',true}
+   <br>
+   <a href="__APP__/article/1" style="color: #D72626;">[阅读更多]</a>
+</div>
+</div>
+<div class="about left ovfl" style="width: 560px; margin-left: 73px;">
+<p class="about_p1">
+<a href="__APP__/article/1" class="about_a1 left"><img src="__TMPL__Public/images/contact_01.jpg" alt="" /></a>
+</p>
+<div class="contact_us">
+<a href="__APP__/contact" class="contact_usa1"><img src="__TMPL__Public/images/contact_img1.jpg" alt="" /></a>
+<a href="__APP__/contact" class="weixin"><img src="__TMPL__Public/images/weixin.jpg" alt="" /></a>
+<a href="__APP__/contact" class="contact_usa2"><img src="__TMPL__Public/images/tel_01.jpg" alt="" /></a>
+<div class="contact_us01">
+<if condition="$config['linkman'] neq ''">联系人：{$config['linkman']}<br></if>
+<if condition="$config['tel'] neq ''">固话：{$config['tel']}<br></if>
+<if condition="$config['mobile'] neq ''">微信号：{$config['mobile']}<br></if>
+<if condition="$config['address'] neq ''">地址：{$config['address']}</if>
+	</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="wrap mar">
+
+<div class="case left ovfl">
+
+<div class="case1">
+<a href="__APP__/product/2" class="left"><img src="__TMPL__Public/images/case_01.jpg" alt="" /></a>
+<span class="casesp1 left">
+<volist name="in_proclass" id="vo">
+<a href="__APP__/product/{$vo.id}"  title="{$vo.name}">{$vo.name|msubstr=0,6,'utf-8',false}</a>
+</volist>
+</span>
+<a href="__APP__/product/2" class=" right" style="color: #888888;font-size: 14px;">更多+</a>
+</div>
+<div class="case2">
+<ul>
+<volist name="in_products" id="vo">
+                            <li>
+                               <a href="__APP__/product/{$vo.pid}_{$vo.id}" title="{$vo.title}" class="casea1"><if condition="$vo.img neq ''"><img src="__ROOT__/__UPLOAD__/m_{$vo.img}" alt="{$vo.title}"/><else /><img src="__TMPL__Public/images/wt.jpg" alt=""/></if></a>
+                               <p class="casep1"><a href="__APP__/product/{$vo.pid}_{$vo.id}"  title="{$vo.title}">{$vo.title|msubstr=0,10,'utf-8',false}</a></p> 
+                               <p class="casep2">{$vo.content|strip_tags|msubstr=0,45,'utf-8',false}</p>
+                               <a href="__APP__/product/{$vo.pid}_{$vo.id}" class="casea2">了解详情+</a>
+                          </li>
+                        </volist>
+</ul>
+</div>
+<div class="case3 right">
+<p class="case3p1"><a href="__APP__/news/4">新闻动态</a></p>
+<ul class="case3_ul">
+<volist name="in_news" id="vo">
+<li><b>&middot;</b><a href="__APP__/news/{$vo.pid}_{$vo.id}"  title="{$vo.title}">{$vo.title|msubstr=0,11,'utf-8',false}</a></li>
+</volist>
+</ul>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<!--wrap-->
+<include file="Public:footer" />
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+﻿body,h1,h2,h3,h4,h5,h6,p,blockquote,dl,dt,dd,ul,ol,li,pre,fieldset,lengend,button,input,textarea,th,td {margin: 0;padding: 0;}
+body,button,input,select,textarea {font: 12px/1 Tahoma,Helvetica,Arial,"\5b8b\4f53",sans-serif;}
+h1 { font-size: 18px;}
+h2 { font-size: 16px;}
+h3 { font-size: 14px;}
+h4,h5,h6 { font-size: 100%;}
+ul,ol { list-style: none;}
+a { color:#3366cc; text-decoration: none;}
+a:hover { text-decoration: underline;}
+img { border:0 none; vertical-align:middle;}
+table {border-collapse: collapse;border-spacing: 0;}
+td,th { border: 1px solid #ccc;}
+input{vertical-align:middle;}
+/*html { overflow-y: scroll;}*/
+
+header, nav, section, article, aside, footer { display: block;}
+
+.cf:before, .cf:after {content:"";display:table;}
+.cf:after {clear:both;}
+.cf {zoom:1;}
+.clear{width:0;height:0;clear:both;overflow:hidden;}

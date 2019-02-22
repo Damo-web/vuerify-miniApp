@@ -1,0 +1,43 @@
+<include file="Public:header" />
+<body class="main">
+<div class="subTit">
+<include file="Public:search" />
+<div class="tit">
+        <a href="javascript:;">Smart</a>&gt;<a href="javascript:;">数据优化</a>
+	</div>
+</div>
+              <div class="content">
+                <div class="tableMod">
+                    <div class="tit">
+                        <a href="javascript:;" onclick="optimization('repair','')"><i class="icon icon_repair"></i>修复选中</a>
+                        <a href="javascript:;" onclick="optimization('optimize','')"><i class="icon icon_optimize"></i>优化选中</a>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="6%"><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>
+                                <th width="40%">表名</th>
+                                <th width="20%">状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="list" id="vo" empty="$empty">
+                            <tr>
+                                <td align="center"><input type="checkbox" value="{$vo.name}" name="id[]"></td>
+                                <td align="center">{$vo.name}</td>
+                                <td align="center">{$vo.state}</td>
+                                <td align="center" class="op">
+                                	<a href="javascript:;" onclick="optimization('repair','{$vo.name}')";><i class="icon icon_repair"></i>修复</a>
+                                    <a href="javascript:;" onclick="optimization('optimize','{$vo.name}')";><i class="icon icon_optimize"></i>优化</a>
+                                </td>
+                            </tr>
+                        </volist>
+                        </tbody>
+                    </table>
+                    <div class="page">{$kpage}</div>
+                </div>
+                <!-- End tableMod -->       
+	</div>
+</body>
+</html>

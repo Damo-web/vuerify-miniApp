@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="{$url}css/common.css" />
+<link rel="stylesheet" type="text/css" href="{$url}css/step1.css" />
+<title>检测服务器环境</title>
+</head>
+	<div class="header">
+    	<div class="comtent">
+        	<img class="logo" src="{$url}img/logo.png" />
+            <div class="head_name">安装向导</div>
+        </div>
+    </div>
+    <div class="step">
+    	<img src="{$url}img/step1.png" />
+    </div>
+    <div class="middle">
+    	<div class="middle_comtent">
+        	<div class="info">
+            	<div class="tit_name">环境检测</div>
+                <div class="tit_bg">
+                	<div class="xiangmu">项目</div>
+                    <div class="fuwuqi">当前服务器</div>
+                </div>
+                <ul>
+                	<li><div class="xiangmu">操作系统</div><div class="fuwuqi">{$server.os}</div></li>
+                	<li><div class="xiangmu">服务器版本</div><div class="fuwuqi">{$server.web}</div></li>
+                    <li><div class="xiangmu">PHP版本</div><div class="fuwuqi">{$server.php}</div></li>
+                    <li><div class="xiangmu">附件上传</div><div class="fuwuqi">{$server.upload}</div></li>
+                    <li><div class="xiangmu">安装目录</div><div class="fuwuqi">{$server.dir}</div></li>                    
+                    <!-- <li><div class="xiangmu">磁盘空间</div><div class="fuwuqi">{$server.hd}</div></li> -->
+                </ul>
+                
+                <div class="tit_name">目录、文件权限检查</div>
+                <div class="tit_bg">
+                	<div class="jiance1">目录文件</div>
+                    <div class="jiance2">当前状态</div>
+                    <div class="jiance3">所需状态</div>
+                </div>
+                <ul>
+                	<li><div class="jiance1">./Runtime</div>{$permission.Runtime}</li>
+                    <li><div class="jiance1">./App/Tpl</div>{$permission.tpl}</li>
+                    <!-- <li><div class="jiance1">./m</div>{$permission.m}</li> -->
+                </ul>
+                
+                <div class="tit_name">依赖性检查</div>
+                <div class="tit_bg">
+                	<div class="jiance1">名称</div>
+                    <div class="jiance2">检查结果</div>
+                    <div class="jiance3">建议</div>
+                </div>
+                <ul>
+                	<li><div class="jiance1">MySQL</div><div class="jiance2">{$dependency.mysql}</div><div class="jiance3">必须支持</div></li>
+                    <li><div class="jiance1">路由重写</div><div class="jiance2">{$dependency.rewrite}</div><div class="jiance3">必须支持</div></li>
+                    <li><div class="jiance1">GD库</div><div class="jiance2">{$dependency.gd}</div><div class="jiance3">建议支持</div></li>
+                </ul>
+                
+                <div class="but_box">
+                	<div class="but_r" style="float:left"><a href="/install.php">上一步</a></div>
+                    <div class="but_r"><a href="__GROUP__/Index/config">下一步</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+    	<div class="comtent">
+    		<div class="copyright">河南青峰网络科技有限公司版权所有 © 2002-2015 All Rights Reserved.</div>
+    	</div>
+    </div>
+    <body>
+</body>
+</html>

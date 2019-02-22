@@ -1,0 +1,43 @@
+<include file="Public:header" />
+<body>
+  <div class="subTit">
+                <div class="query"><form action="">
+                    <select name="" id="" class="txt">
+                    	<option value="">查看所有</option>
+                    </select>
+                    <label>信息检索： <input type="text" class="txt" /></label>
+                    <button class="submit icon icon_search"></button>
+                </form></div>
+                <div class="tit">
+                    <a href="javascript:;">文章</a>&gt;<a href="javascript:;">新闻列表</a>
+                </div>
+            </div>
+              <div class="content">
+                <div class="tableMod">
+                    <div class="tit">
+                        <a href="javascript:;"><i class="icon icon_txt"></i>管理分类</a>
+                        <a href="__GROUP__/Article/add"><i class="icon icon_add"></i>添加文章</a>
+                        <a href="javascript:;" onclick="batch_del(this, 'Article')"><i class="icon icon_del"></i>删除选中项</a>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="10%">ID</th>
+                                <th >支付宝信息</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="list" id="vo" empty="$empty">
+                            <tr>
+                            	<td align="center"><span class="col_ccc">{$vo.id}</span></td>
+                               <td align="center"><span class="col_ccc">{$vo.content}</span></td>                               
+                            </tr>
+                        </volist>
+                        </tbody>
+                    </table>
+                    <div class="page">{$page}</div>
+                </div>
+                <!-- End tableMod -->       
+	</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<include file="Public:header" />
+<div class="z_tips ">
+<present name="message">
+    <span class="true red">操作成功</span>
+<else/>
+    <span class="false red">操作失败 : <?php echo($error); ?> <?php echo($message); ?></span>
+</present>
+<p class="detail"></p>
+<p>将在<span class="red" id="wait"><?php echo($waitSecond); ?></span>秒钟后自动跳转页面 如果不想等待请点击  <a id="href" href="<?php echo($jumpUrl); ?>">这里</a> 返回</p>
+</div>
+
+<script type="text/javascript">
+(function(){
+var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+var interval = setInterval(function(){
+    var time = --wait.innerHTML;
+    if(time == 0) {
+        location.href = href;
+        clearInterval(interval);
+    };
+}, 1000);
+})();
+</script>
+
+</body>
+</html>

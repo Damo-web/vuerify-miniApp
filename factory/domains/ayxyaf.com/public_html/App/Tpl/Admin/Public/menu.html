@@ -1,0 +1,72 @@
+			<dl class="lay_menu" id="lay_menu">            	
+            	<dt class="item_tit" onclick="fun(1);"><a href="javascript:;"><i class="icon icon_page"></i>单页</a></dt>
+                <dd class="item_cont con1" style="display:none">
+                    <ul>
+                        <li><a  href="__GROUP__/Single" target="main"><i class="icon icon_this"></i>管理单页</a></li>
+                        <li><a  href="__GROUP__/Single/add" target="main"><i class="icon icon_this"></i>新增单页</a></li>
+                    </ul>
+                </dd>
+            	<dt class="item_tit" onclick="fun(2);"><a href="javascript:;"><i class="icon icon_article"></i>文章</a></dt>
+                <dd class="item_cont con2" style="display:none">
+                    <ul>
+                        <li><a href="__GROUP__/Article/"  target="main"><i class="icon icon_this"></i>文章列表</a></li>
+                        <li><a href="__GROUP__/Article/add"  target="main"><i class="icon icon_this"></i>新增文章</a></li>
+                        <li><a href="__GROUP__/Category/article"  target="main"><i class="icon icon_this"></i>文章分类</a></li>
+                    </ul>
+                </dd>
+            	<dt class="item_tit" onclick="fun(3);"><a href="javascript:;"><i class="icon icon_product"></i>产品</a></dt>
+                <dd class="item_cont con3" style="display:none">
+                    <ul>
+                        <li><a href="__GROUP__/Goods/" target="main"><i class="icon icon_this"></i>产品列表</a></li>
+                        <li><a href="__GROUP__/Goods/add" target="main"><i class="icon icon_this"></i>新增产品</a></li>
+                        <li><a href="__GROUP__/Category/goods"  target="main"><i class="icon icon_this"></i>产品分类</a></li>
+                        <if condition="$switch_order eq '1'" >
+                        <li><a href="__GROUP__/Order/" target="main"><i class="icon icon_this"></i>查看订单</a></li>
+                        </if>
+                    </ul>
+                </dd>
+                <if condition="$switch_jobs eq '1'" >
+            	<dt class="item_tit" onclick="fun(4);"><a href="javascript:;"><i class="icon icon_join"></i>招聘</a></dt>
+                <dd class="item_cont con4" style="display:none">
+               	 	<ul>
+                        <li><a href="__GROUP__/Jobs/" target="main"><i class="icon icon_this"></i>招聘岗位</a></li>
+                        <li><a href="__GROUP__/Jobs/add" target="main"><i class="icon icon_this"></i>新增岗位</a></li>
+                        <li><a href="__GROUP__/Category/jobs"  target="main"><i class="icon icon_this"></i>招聘分类</a></li>
+                        <li><a href="__GROUP__/Apply" target="main"><i class="icon icon_this"></i>简历列表</a></li>
+                         <li><a href="__GROUP__/Jobs/qfjob" target="main"><i class="icon icon_this"></i>云招聘</a></li>
+                    </ul>
+                </dd>
+                </if>
+                <if condition="$switch_message eq '1'" >
+            	<dt class="item_tit" onclick="fun(5);"><a href="javascript:;"><i class="icon icon_msg"></i>留言</a></dt>
+                <dd class="item_cont con5" style="display:none">
+                	<ul>
+                       <li><a href="__GROUP__/Message" target="main"><i class="icon icon_this"></i>留言列表</a></li>
+                       <li><a href="__GROUP__/Message/weixin" target="main"><i class="icon icon_this"></i>微信互联</a></li>
+                    </ul>
+                </dd>
+                </if>
+                <dt class="item_tit" onclick="fun(6);"><a href="javascript:;"><i class="icon icon_form"></i>Smart</a></dt>
+                <dd class="item_cont con6" style="display:none">
+                	<ul>
+                        <li><a href="__GROUP__/Smart/view" target="main"><i class="icon icon_this"></i>Smart标签</a></li>
+                        <li><a href="__GROUP__/Smart/optimization" target="main"><i class="icon icon_this"></i>数据优化</a></li>
+                        <li><a href="__GROUP__/Smart/clearcache" target="main"><i class="icon icon_this"></i>更新缓存</a></li>
+                        <li><a href="__GROUP__/Smart/m_pc" target="main"><i class="icon icon_this"></i>移动互联</a></li>
+                        <li><a href="__GROUP__/Smart/qftouch" target="main"><i class="icon icon_this"></i>QFTouch</a></li>
+                    </ul>
+                </dd>
+                <dt class="item_tit item_end" onclick="fun(7);"><a href="javascript:;"><i class="icon icon_sys"></i>系统</a></dt>
+                <dd class="item_cont con7" style="display:none">
+                    <ul>
+                    	<li><a href="__GROUP__/Index/status"  target="main"><i class="icon icon_this"></i>系统状态</a></li>
+                        <li><a href="__GROUP__/System/" target="main"><i class="icon icon_this"></i>网站设置</a></li>
+                        <li><a href="__GROUP__/Flash/pc" target="main"><i class="icon icon_this"></i>轮显图片</a></li>
+                        <if condition="$Think.session.user_id eq '1'" >
+                            <li><a href="__GROUP__/User/" target="main"><i class="icon icon_this"></i>用户管理</a></li>
+                        </if>
+                        <li><a href="__GROUP__/Article/links" target="main"><i class="icon icon_this"></i>友情链接</a></li>
+                    </ul>
+                </dd>
+            </dl>
+            <input type="hidden" id="hiddenId"/>

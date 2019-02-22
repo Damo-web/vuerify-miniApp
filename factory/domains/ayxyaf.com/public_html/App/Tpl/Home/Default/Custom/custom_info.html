@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<include file="Public:head" />
+          <load href="__TMPL__Public/Js/fancybox/jquery.fancybox-1.3.4.css" />
+    <load href="__TMPL__Public/Js/fancybox/jquery.fancybox-1.3.4.js" />
+    <script>
+$(function(){
+$(".mesmore").fancybox();
+});
+</script>
+</head>
+<body>
+
+<include file="Public:header" />
+<div class="wrap mar">
+<include file="Public:sidebar" />
+<div class="right_side ">
+<div class="right_title">
+<div class="right_title_left">{$titles}</div>
+<div class="right_title_right"><span class="right_title_right_sp1"></span><span class="right_title_right_sp2">当前位置：<a href="__APP__/">网站首页</a>{$get_category_menu} > {$list['title']|msubstr=0,10,'utf-8',false}</span></div>
+</div>
+<!--right_title-->
+<div class="right_content">
+
+<h2 id="newTitle"><strong>{$list['title']}</strong></h2>
+                        <h6 id="newsInfo">发布：{$user['username']}<span class="newsinfoleft">浏览：{$list['click']}次</span></h6>
+                        <if condition="$list['is_open'] eq 0"><if condition="$list['img'] neq ''"><p id="infoImage"><a href="__ROOT__/__UPLOAD__/{$list['img']}" class="mesmore"><img src="__ROOT__/__UPLOAD__/{$list['img']}" alt="{$list['title']}"/></a></p></if>
+                        
+                        </if>
+                         <div class="recruit_info_tit_bg">
+                	<div class="recruit_info_tit">
+                    详细说明
+                    </div>
+                </div>
+                        <div id="newsContent">
+                             <div class="newsContent">{$list['content']}</div>
+                             <if condition="$list['link'] neq ''">
+                              <div class="alink"><strong>外部链接：</strong><a href="{$list['link']}" target="_blank">{$list['link']}</a></div>
+                             </if>    
+                        </div>
+                               <div class="pageslist">
+                            <p class="pageslistp1">
+                                <i class=" fa fa-arrow-circle-left"></i>
+                                <strong>上一条信息：</strong><if condition="$prev_title neq ''">
+                                                    <a href="{$prev}" title="{$prev_title}">{$prev_title|msubstr=0,15}</a><else />
+                                                    <span>没有了！</span>
+                                                    </if>
+                            </p>
+                            <p class="pageslistp2">
+                            <i class=" fa fa-arrow-circle-right"></i>
+                              <strong>下一条信息：</strong><if condition="$next_title neq ''">
+                                                    <a href="{$next}"  title="{$next_title}">{$next_title|msubstr=0,15}</a><else />
+                                                    <span>没有了！</span>
+                                                    </if>
+                            </p>
+                            
+                        </div>
+                       
+
+</div>
+<!--right_content-->
+</div>
+<!--right_side-->
+<div class="clear"></div>
+</div>
+<!--wrap-->
+<include file="Public:footer" />
+
+</body>	
+</html>  

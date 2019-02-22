@@ -1,0 +1,53 @@
+<include file="Public:header" />
+<body class="main">
+<div class="subTit">
+    <div class="tit">
+        <a href="javascript:;">系统</a>
+        &gt;
+        <a href="javascript:;">用户管理</a>
+    </div>
+</div>
+<div class="content">
+    <div class="tableMod">
+        <div class="tit">
+            <a href="__GROUP__/User/add"> <i class="icon icon_add"></i>
+                添加用户
+            </a>
+            <a href="javascript:;" onclick="batch_del(this, 'User')"> <i class="icon icon_del"></i>
+                删除选中项
+            </a>
+            {$input_hidden}
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>
+                    <th>ID</th>
+                    <th>用户名</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <volist name="user_list" id="user" empty="$empty">
+                    <tr>
+                        <td align="center">
+                            <input type="checkbox" value="{$user.id}" name="id[]"></td>
+                        <td align="center">
+                            <span class="col_ccc">{$user.id}</span>
+                        </td>
+                        <td align="center">{$user.username}</td>
+                        <td align="center" class="op">
+                            <a href="__GROUP__/User/edit/id/{$user.id}"><i class="icon icon_edit"></i>修改</a>&nbsp;
+                            <a href="javascript:;" onclick="del(this,'User',{$user.id})";><i class="icon icon_x"></i>删除</a>
+                        </td>
+                    </tr>
+                </volist>
+            </tbody>
+        </table>
+        <div class="page">{$page}</div>
+    </div>
+    <!-- End tableMod -->
+</div>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="{$url}css/common.css" />
+<link rel="stylesheet" type="text/css" href="{$url}css/step2.css" />
+<script charset="utf-8" src="{$root_dir}/App/Tpl/Admin/Public/Js/jquery.js"></script>
+<style type="text/css">	
+	table th{width: 110px !important;}
+	table th .mark{color: red;margin-right: 6px;}
+</style>
+<script type="text/javascript">
+$(function(){
+   $("#test_db").click(function(){
+		check_db();
+   })
+   
+   $("#next").click(function(){
+	   	var error = 0;
+	   	if($("#web_name").val() == '')
+	   	{
+	   		$("#web_name").next().html('网站名称不可以为空');
+	   		error = 1;
+	   		return false;
+	   	}else
+	   	{
+	   		$("#web_name").next().html('');
+	   	}
+	   	if($("#user").val() == '')
+	  	{
+	   		$("#user").next().html('管理员名称不可以为空');
+	   		error = 1;
+	  	}else
+	   	{
+	   		$("#user").next().html('');
+	   	}
+		if($("#pwd").val() == '')
+	  	{
+			$("#pwd").next().html('管理员密码不可以为空');
+			error = 1;
+	  	}else
+	   	{
+	   		$("#pwd").next().html('');
+	   	}
+		
+		//数据库验证, 现在实现和DA配合,实现自动化.
+		//var d = check_db();
+		if(error == 1)
+		{
+			return false;
+		}else
+		{
+			$("#myForm").submit();	
+		}
+   })
+
+   $('#domain').blur(function(){
+   		var aa = $("#domain").val().trim();
+   		var host = 'http://'+window.location.host;
+   		if(aa == ''){
+   			$("#domain").val(host);
+   		}
+   })
+
+});
+
+
+
+function check_db()
+{
+	var host = $("#db_host").val();
+	var name = $("#db_name").val();
+	var user = $("#db_user").val();
+	var pwd  = $("#db_pwd").val();
+   	$.getJSON("{$root_dir}/Install/Index/ajax/t/test_db",{db_host:host,db_name:name,db_user:user,db_pwd:pwd }, function(data){
+		alert(data.data);
+	});
+}
+</script>
+<title>设置网站信息</title>
+</head>
+<body>
+	<div class="header">
+    	<div class="comtent">
+        	<img class="logo" src="{$url}img/logo.png" />
+            <div class="head_name">安装向导</div>
+        </div>
+    </div>
+    <div class="step">
+    	<img src="{$url}img/step2.png" />
+    </div>
+    <div class="middle">
+    	<div class="middle_comtent">
+        	<div class="info">
+            	<form action="" id="myForm" method="POST">
+            	<if condition="$config eq '0'">
+            	<div class="tit_name2">请填写数据库信息</div>
+	                <table>
+	                    <tr>
+	                    	<th><span class="mark">*</span>数据库服务器：</th>
+	                        <td><input type="text" name="db_host" id="db_host" value="localhost" /><span class="mark"></span></td>
+	                    </tr>
+	                    <tr>
+	                    	<th><span class="mark">*</span>数据库名称：</th>
+	                        <td><input type="text" name="db_name" id="db_name" /><span class="mark"></span></td>
+	                    </tr>
+	                    <tr>
+	                    	<th><span class="mark">*</span>数据库用户名:</th>
+	                        <td><input type="text" name="db_user" id="db_user" /><span class="mark"></span></td>
+	                    </tr>
+	                    <tr>
+	                    	<th><span class="mark">*</span>数据库密码：</th>
+	                        <td><input type="text" name="db_pwd" id="db_pwd" /><span class="mark"></span></td>
+	                    </tr>
+	                    <tr>
+	                    	<th>　数据表前缀：</th>
+	                        <td><input type="text" name="db_prefix" id="db_prefix" value="qf_" /><span class="mark"><a href="javascript:;" id="test_db">测试</a></span></td>
+	                    </tr>
+	                </table>
+	                </if>
+	                <div class="tit_name2">请填写相关信息</div>
+	                <table>
+	                    <tr>
+	                    	<th><span class="mark">*</span>网站名称：</th>
+	                        <td><input type="text" name="web_name" id="web_name"/><span class="mark"></span></td>
+	                    </tr>
+	                    <tr>
+	                    	<th><span class="mark">*</span>管理员名称:</th>
+	                        <td><input type="text" name="user" id="user" /><span class="mark"></span></td>
+	                    </tr>
+	                    <tr>
+	                    	<th><span class="mark">*</span>管理员密码：</th>
+	                        <td><input type="text" name="pwd" id="pwd" /><span class="mark"></span></td>
+	                    </tr>
+	                    <tr>
+	                    	<th>　网站URL：</th>
+	                        <td><input type="text" name="domain" id="domain"  value="{$local_server}"/></td>
+	                    </tr>
+	                    <tr>
+	                    	<th>　网站金额：</th>
+	                        <td><input type="text" name="money" id="money" /></td>
+	                    </tr>
+	                    <tr>
+	                    	<th>　备案编号：</th>
+	                        <td><input type="text" name="icp_num" id="icp_num" /></td>
+	                    </tr>
+	                </table>
+	                <div class="but_box">
+	                	<div class="but_r" style="float:left"><a href="__GROUP__/Index/check">上一步</a></div>
+	                    <div class="but_r"><a href="javascript:;" id="next">下一步</a></div>
+	                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+    	<div class="comtent">
+    		<div class="copyright">河南青峰网络科技有限公司版权所有 © 2002-2015 All Rights Reserved.</div>
+    	</div>
+    </div>
+</body>
+</html>

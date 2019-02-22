@@ -1,0 +1,40 @@
+<tagLib name="html"/>
+<include file="Public:header" />
+<body class="main">
+ 	<div class="subTit">
+                <div class="tit">
+                    <a href="javascript:;">系统</a>&gt;<a href="javascript:;">高级管理</a>
+                </div>
+            </div>
+            <div class="content">
+                <div class="formMod">
+                    <div class="tit">高级管理</div>
+                    <form name="form1" id="form1" enctype="multipart/form-data" method="post" action="">
+                        <ul>
+                            <li>
+                                <label for="tpl">模板文件：</label>
+                                <div class="item_cont">
+                                    <input type="file" class="txt" id="tpl" name="tpl" />
+                                    <span class="msg">上传页面模板文件，压缩格式为ZIP格式。</span>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="sql">数据库文件：</label>
+                                <div class="item_cont">
+                                    <input type="file" class="txt" id="sql" name="sql" />
+                                  <span class="msg">上传页面数据库文件，压缩格式为ZIP格式。</span>
+                                </div>
+                            </li>
+
+                            <li class="push">
+                                <div class="item_cont">
+                                    <input type="submit" class="submit" value="提&nbsp;交" />
+                                    <input type="reset" class="reset" value="重&nbsp;置" />
+                                </div>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+</body>
+</html>

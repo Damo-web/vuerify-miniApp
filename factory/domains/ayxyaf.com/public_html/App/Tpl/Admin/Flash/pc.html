@@ -1,0 +1,40 @@
+<include file="Public:header" />
+<body class="main">
+              <div class="content">
+                <div class="tableMod">
+                    <div class="tit">
+                        <a href="__GROUP__/Flash/add"><i class="icon icon_add"></i>添加电脑轮换图片</a>
+                        <a href="javascript:;" onclick="batch_del(this, 'Flash')"><i class="icon icon_del"></i>删除选中项</a>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="6%"><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>
+                                <th width="30%">标题</th>
+                                <th>图片</th>
+                                <th>链接</th>
+                                <th>排序</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           	<volist name="list" id="vo" empty="$empty">
+                           	<tr>
+                                <td align="center"><input type="checkbox" value="{$vo.id}" name="id[]"></td>
+                                <td align="center"><span class="col_ccc">{$vo.title}</span></td>
+                                <td align="center"><a href="__GROUP__/Flash/edit/id/{$vo.id}"><img src="__ROOT__/<?php echo C('UPLOAD_DIR'); ?>{$vo.img}" height="50" /></a></td>
+                                <td align="center">{$vo.link}</td>
+                                <td align="center"  class="order">{$vo.order}</td>
+                                <td align="center" class="op">
+                                    <a href="__GROUP__/Flash/edit/id/{$vo.id}"  target="main"><i class="icon icon_edit"></i>修改</a>
+                                   	<a href="javascript:;" onclick="del(this,'Flash',{$vo.id})";><i class="icon icon_x"></i>删除</a>
+                                </td>
+                            </tr>
+							</volist>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- End tableMod -->       
+	</div>
+</body>
+</html>

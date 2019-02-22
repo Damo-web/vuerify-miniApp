@@ -1,0 +1,41 @@
+<include file="Public:header" />
+<body class="main">
+              <div class="content">
+                <div class="tableMod">
+                    <div class="tit">
+                        <a href="__GROUP__/Config/add"><i class="icon icon_add"></i>添加系统配置</a>
+                        <a href="javascript:;" onclick="batch_del(this, 'Config')"><i class="icon icon_del"></i>删除选中项</a>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="6%"><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>
+                                <th>KEY</th>
+                                <th>名称</th>
+                                <th>类型</th>
+                                <th>选项</th>
+                                <th >操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           	<volist name="list" id="vo" empty="$empty">
+                           	<tr>
+                                <td align="center"><input type="checkbox" value="{$vo.id}" name="id[]"></td>
+                                <td align="center"><span class="col_ccc">{$vo.key}</span></td>
+                                <td><a href="__GROUP__/Config/edit/id/{$vo.id}">{$vo.name}</a></td>
+                                <td align="center">{$vo.type}</td>
+                                <td align="center">{$vo.options}</td>
+                                <td align="center" class="op">
+                                    <a href="__GROUP__/Config/edit/id/{$vo.id}"  target="main"><i class="icon icon_edit"></i>修改</a>
+                               		<a href="javascript:;" onclick="del(this,'Config',{$vo.id})";><i class="icon icon_x"></i>删除</a>
+                               	</td>
+                            </tr>
+							</volist>
+                        </tbody>
+                    </table>
+					<div class="page">{$page}</div>
+                </div>
+                <!-- End tableMod -->       
+	</div>
+</body>
+</html>

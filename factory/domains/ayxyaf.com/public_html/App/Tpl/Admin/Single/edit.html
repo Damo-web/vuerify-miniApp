@@ -1,0 +1,100 @@
+<tagLib name="html"/>
+<include file="Public:header" />
+<include file="Public:editor" />
+<script type="text/javascript">
+		$(function(){    			
+            $("#delpic_1").click(function (){
+                if(confirm('确认删除？')){
+                    var picid=$("#id").val();
+                    $.get("__GROUP__/Article/delpic_1",{id:picid},function (data){
+                        if(data == 1){
+                            alert('删除图片成功！');
+                        }else if(data == 0){
+                            alert('删除图片失败！');
+                        }
+                        window.location.reload();
+                    })
+                } 
+            })
+
+		})		
+</script>
+<body class="main">
+ 	<div class="subTit">
+               
+                <div class="tit">
+                    <a href="javascript:;">单页</a>&gt;<a href="javascript:;">{$title_type}单页</a>
+                </div>
+            </div>
+            <div class="content">
+                <div class="formMod">
+                    <div class="tit">{$title_type}单页</div>
+                    <form name="form1" class="validform" enctype="multipart/form-data" method="post" action="">
+                        <ul>
+                            <li>
+                                <label for="title">单页标题：</label>
+                                <div class="item_cont">
+                                    <input type="text" class="txt" id="title" name="title" datatype="*" nullmsg="请填写单页标题" style="width:637px;" value="{$info.title}" />
+                                </div>
+                            </li>
+                             <li>
+                                <label for="title">英文标题：</label>
+                                <div class="item_cont">
+                                    <input type="text" class="txt" id="title_en" name="title_en" style="width:637px;" value="{$info.title_en}" /><span style="color:#CCC">（选填，用于显示内页英文）</span>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="title">分类所属：</label>
+                                <div class="item_cont">
+                                    <input type="text" class="txt" id="upclass" name="upclass" style="width:100px;" value="{$info.upclass}" /><span style="color:#CCC">（选填，用于内页左侧显示）</span>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="img">图片：</label>
+                                <div class="item_cont">
+                                    <input type="file" class="txt" id="img" name="img" size="35"/>
+                                    <if condition='$info.img neq ""'><a href="__ROOT__/<?php echo C('UPLOAD_DIR'); ?>{$info.img}" target="_black">查看图片</a> <a href="javascript:;" id="delpic_1">删除图片</a></if>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="keywords">关键词：</label>
+                                <div class="item_cont">
+                                    <input type="text" class="txt" id="keywords" name="keywords" style="width:637px;" value="{$info.keywords}" />
+                                </div>
+                            </li>
+                            <li>
+                                <label for="description">单页描述：</label>
+                                <div class="item_cont">
+                                    <textarea name="description" id="description" style="width:637px;" rows="10" class="txt"  >{$info.description}</textarea>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="content">单页内容：</label>
+                                <div class="item_cont">
+                                    <textarea  style="width:637px;" rows="10" id="content" name="content">{$info.content}</textarea>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="order">排序：</label>
+                                <div class="item_cont">
+                                    <input type="number" id="order" name="order"  min="0" max="99999" step="1" placeholder="<if condition="$info.order neq ''">{$info.order}<else />0</if>" value="{$info.order}" class="txt"/>
+                                </div>
+                            </li>
+                            <li class="push">
+                                <div class="item_cont">
+                                 <if condition="$info.id neq ''">
+                                    <input type="hidden" id="id" name="id" value="{$info.id}" />
+                                    <input type="hidden" id="img" name="img" value="{$info.img}" />
+                                    <input type="hidden" id="time" name="time" value="{$info.time}" />
+                                    <input type="hidden" id="click" name="click" value="{$info.click}" />
+                                 </if>
+                                    <input type="submit" class="submit txt1" value="提&nbsp;交" />
+                                    <input type="reset" class="reset" value="重&nbsp;置" />
+                                </div>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+</body>
+</html>

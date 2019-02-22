@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>引用页</title>
+    <load href="../Public/Css/reset.css" />
+    <load href="../Public/Css/base.css" />
+<style>
+ul{ margin-bottom: 20px;}
+ul li{ padding-left: 10px;}
+.qfjs{ vertical-align: middle; margin-left: 10px;font-size: 14px; }
+.qfjs span{ display: block; color: #666666; }
+.qfjs textarea{ width: 50%; height: 100px; margin-top: 5px; vertical-align: middle;}
+.sub{ margin:10px 0px 20px 0px;}
+.sub input{ width: 78px; height: 30px; background-color: #f5f5f5; border:1px solid #c4c4c4;  border-radius: 4px; color: #444444; font-size: 14px; font-family: "microsoft yahei"; font-weight: bold; margin-left: 10px;}
+.sub input:hover{cursor: pointer; color:#1f7ac4;} 
+.qfjob_hide{ display: none;}
+.novip{ vertical-align: middle; margin: 30px 0px 50px 10px;font-size: 14px; color: #f18900;}
+.novip a{font-size: 14px;text-decoration: underline; color: #1f7ac4;}
+#notice{color:#666666; font-size: 14px; margin-left: 10px;}
+</style>    
+<script>
+var url = "__ROOT__";
+</script>
+</head>
+<body class="main">
+<load href="../Public/Js/jquery.tzCheckbox/jquery.tzCheckbox.css" />
+<script src="../Public/Js/jquery.google.js"></script>
+<script src="../Public/Js/jquery.tzCheckbox/jquery.tzCheckbox.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('input[type=checkbox]').tzCheckbox({labels:['Enable','Disable']});
+
+    if($(".tzCheckBox").text() == '已开启'){
+       $("#qfh").removeClass('qfjob_hide');
+    }
+    $(".tzCheckBox").click(function(){
+        var v;
+        if($(this).text() == '已开启')
+        {
+            v='0';
+            $("#notice").text('');
+            $("#notice").text("已开启，将api代码粘贴到下框中，您的网站将云同步在人才网中的招聘职位信息；推荐开启");
+            $("#qfh").removeClass('qfjob_hide');
+        }else
+        {
+            v='-1';
+            $("#notice").text('');
+            $("#notice").text("已关闭，您将使用普通招聘服务。");
+            $("#qfh").addClass('qfjob_hide');
+        }
+        $.getJSON("__ROOT__/Admin/Smart/ajax/t/qfjob/v/"+v, function(data){
+            
+        });
+
+    })
+});
+</script>
+<div class="subTit">
+                <div class="tit">
+                    <a href="javascript:;">招聘</a>&gt;<a href="javascript:;">云招聘</a>
+                </div>
+            </div>
+            <div class="content">
+                <div class="formMod">
+                    <div class="tit">欢迎使用青峰人才招聘服务</div>
+                    
+                        <ul>
+                            <li>
+                            
+                                 <input type="checkbox" id="switch_mbaidu" name="switch_mbaidu" data-on="已开启" data-off="已关闭" <if condition="$status eq '0'">checked</if> /> <span id="notice"><if condition="$status eq '0'">已开启，将api代码粘贴到下框中，您的网站将云同步在人才网中的招聘职位信息；推荐开启
+<else />已关闭，您将使用普通招聘服务。</if></span>
+                            </li>
+
+                        </ul>
+
+                    <div class="qfjob_hide" id="qfh">
+                    <form action="__GROUP__/Jobs/qfjob" method="post">
+                    <div class="qfjs"><span  title="加入青峰人才，将免费提供此API。">API：</span><textarea name="qfcode">{$qfcode}</textarea></div>
+                    <div class="sub"><input type="submit" class="submit" value="提&nbsp;交" /></div>
+                    </form>
+                    <div class="novip">不是人才网会员？找工作聘人才，就上青峰人才网。<a href="http://www.qfjob.cn/#sites" target="_blank">点击注册</a></div>
+                    </div>
+                </div>
+            </div>
+  
+
+
+</body>
+</html>

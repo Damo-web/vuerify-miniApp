@@ -1,0 +1,71 @@
+<tagLib name="html"/>
+<include file="Public:header" />
+<script type="text/javascript" language="javascript">
+    $(function(){
+        $("#form1").submit(function ()
+        {
+            var ss = $('#reply').val();
+            if(ss.trim() == '')
+            {
+                alert('请输入回复内容');
+                $("#reply").focus();
+                return false;
+            }
+        });
+    });
+</script>
+<body class="main">
+ 	<div class="subTit">
+                
+                <div class="tit">
+                    <a href="javascript:;">留言</a>&gt;<a href="javascript:;">留言信息</a>
+                </div>
+            </div>
+            <div class="content">
+                <div class="formMod">
+                    <div class="tit">留言详细</div>
+                    <form action="" method="post" enctype="multipart/form-data" id="form1">
+                        <ul>
+                            <li>
+                                <label for="newsId">姓名：</label>
+                                <div class="item_cont">
+                                    <input type="text" class="txt" id="job" name="job" size="35" value="{$info.name}" readonly="readonly" />
+                                </div>
+                            </li>
+
+                            <li>
+                                <label for="newsCont">留言时间：</label>
+                                <div class="item_cont">
+                                    <input type="text" class="txt" id="time" name="time" size="35" value="{$info.time}" readonly="readonly"/>
+                                </div>
+                            </li>
+                            
+                            <li>
+                                <label for="newsCont">留言内容：</label>
+                                <div class="item_cont">
+                                    <textarea cols="88" rows="10" class="txt" id="content" name="content" readonly="readonly">{$info.content}</textarea>
+                                </div>
+                            </li>
+                            
+                            <li>
+                                <label for="newsCont">回复留言：</label>
+                                <div class="item_cont">
+                                    <textarea cols="88" rows="10" class="txt" id="reply" name="reply">{$info.reply}</textarea>
+                                </div>
+                            </li>
+                            <li class="push">
+                                <div class="item_cont">
+                                 <if condition="$info.id neq ''">
+                                 	<input type="hidden" id="id" name="id" value="{$info.id}" />
+
+                                 </if>
+                                    <input type="submit" class="submit" value="提&nbsp;交" />
+                                    <input type="reset" class="reset" value="重&nbsp;置" />
+                                </div>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<include file="Public:head" />
+    <link rel="stylesheet" href="__TMPL__Public/Js/Validform/images/validate.css?v=<php>echo time();</php>">
+    <script src="__TMPL__Public/Js/Validform/Validform_v5.3.2_min.js" language="JavaScript" type="text/javascript"></script>
+<script type="text/javascript">
+	    $(function(){
+			$("#form1").Validform({
+		tiptype:3,		
+	});
+		});
+	  </script>
+</head>
+<body>
+<include file="Public:header" />
+<div class="wrap mar">
+<include file="Public:sidebar" />
+<div class="right_side ">
+<div class="right_title">
+<div class="right_title_left">在线订单</div>
+<div class="right_title_right"><span class="right_title_right_sp1"></span><span class="right_title_right_sp2">当前位置：<a href="__APP__/">网站首页</a> > 在线订单</span></div>
+</div>
+<!--right_title-->
+<div class="right_content">
+<ul class="message_ul">
+<form action="__APP__/Order/add_order" method="post" id="form1">
+                         <li>
+                             <label for="name">产品名称：</label>
+                              <select name="cp_id" class="cpmcys" id="cp_id" >
+                                <option value="0">请选择产品</option>
+                                <volist name="product" id="vo">
+                                    <option value="{$vo.id}">{$vo.title}</option>
+                                </volist>
+                            </select>
+                              </li>
+                             <li><label for="name">姓　　名：</label><input type="text" name="name" id="name" class="G_InputText" value="{$name}" placeholder="输入您的姓名" datatype="s2-10" nullmsg="输入您的姓名" sucmsg=" "/> </li>
+                            <li><label for="telephone">电　　话：</label><input type="text" name="tel" id="telephone" class="G_InputText" placeholder="输入您的电话" datatype="m" nullmsg="输入您的电话" sucmsg=" "/> </li>
+                            <li><label for="address">地　　址：</label><input type="text" name="add" id="address" class="G_InputText" placeholder="输入您的地址" datatype="*" nullmsg="输入您的地址" sucmsg=" "/> </li>
+                            <li><label for="email">邮　　箱：</label><input type="text" name="email" id="email" class="G_InputText" placeholder="输入您的邮箱" datatype="e" nullmsg="输入您的邮箱" sucmsg=" "/></li>
+                            <li><label for="content">备　　注：</label><textarea name="notes" id="notes" class="G_textarea"></textarea> </li>
+                            <li><label for="checkCode">验 证 码：</label><input type="text" id="captcha" name="captcha"  class="yanzheng" autocomplete="off" maxlength="4"/>
+                  <img src="__APP__/Base/verify" alt="" title="点击更换验证码" style="cursor:pointer;vertical-align: -6px;margin-left: 5px;" onclick="this.src='__APP__/Base/verify?t='+Math.random();">  </li>
+                            <li style="padding-left:30px;"><button id="submit" type="submit" class="But" >马上订购</button></li>
+                         </form>
+</ul>
+
+</div>
+<!--right_content-->
+</div>
+<!--right_side-->
+<div class="clear"></div>
+</div>
+<!--wrap-->
+<include file="Public:footer" />
+</body>	
+</html>
+

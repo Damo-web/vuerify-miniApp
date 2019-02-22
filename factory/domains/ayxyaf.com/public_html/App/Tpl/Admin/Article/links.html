@@ -1,0 +1,57 @@
+<include file="Public:header" />
+<body class="main">
+<div class="subTit">
+<include file="Public:search1" />
+<div class="tit">
+        <a href="javascript:;">系统</a>&gt;<a href="javascript:;">友情链接</a>
+	</div>
+</div>
+              <div class="content">
+                <div class="tableMod">
+                    <div class="tit">
+                        <a href="__GROUP__/Article/add/l_id/6"><i class="icon icon_add"></i>添加链接</a>
+                        <a href="javascript:;" onclick="batch_del(this, 'Article')"><i class="icon icon_del"></i>删除选中项</a>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="6%"><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>
+                                <th width="5%">ID</th>
+                                <th width="12%">类别</th>
+                                <th width="45%">文章标题</th>
+                                <th width="9%">图片</th>
+                                <th width="9%">排序</th>
+                                <th width="14%">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="list" id="vo" empty="$empty">
+                            <tr>
+                                <td align="center"><input type="checkbox" value="{$vo.id}" name="id[]"></td>
+                                <td align="center"><span class="col_ccc">{$vo.id}</span></td>
+                                <td align="center">友情链接</td>
+                                <td><a style="text-decoration:none;">{$vo.title}</a></td>
+                                <td align="center">
+                                    <if condition="$vo.img neq '' ">
+                                        <a href="__ROOT__/news/{$vo.pid}_{$vo.id}" target="_blank">   
+                                            <img src="__ROOT__/<?php echo C('UPLOAD_DIR'); ?>{$vo.img}" height="20" id="show_img" /> 
+                                        </a>
+                                    <else />
+                                        无
+                                    </if>
+                                </td>
+                                <td align="center" class="order">{$vo.order}</td>
+                                <td align="center" class="op">
+                                	<a href="__GROUP__/Article/edit/id/{$vo.id}/l_id/6"><i class="icon icon_edit"></i>修改</a>
+                                    <a href="javascript:;" onclick="del(this,'Article',{$vo.id})";><i class="icon icon_x"></i>删除</a>
+                                </td>
+                            </tr>
+                        </volist>
+                        </tbody>
+                    </table>
+                    <div class="page">{$page}</div>
+                </div>
+                <!-- End tableMod -->       
+	</div>
+</body>
+</html>

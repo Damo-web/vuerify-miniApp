@@ -1,0 +1,22 @@
+
+<div class="left_side">
+<p class="left_sidep1"><a href="__APP__/product/2">产品中心</a></p>
+<ul class="left_sideul">
+<volist name="in_proclass1" id="vo">
+<li id="left_{$vo.id}"><a href="__APP__/product/{$vo.id}"  title="{$vo.name}">{$vo.name|msubstr=0,10,'utf-8',false}</a></li>
+</volist>
+</ul>
+<script type="text/javascript">
+	try{
+	document.getElementById("left_{$bz1}").className="selectli";
+	}catch(e){}
+	</script>
+<div class="pcontact_us ovfl">
+<a href="__APP__/contact" class="pcontact_a3"><img src="__TMPL__Public/images/pweixin.jpg" /></a>
+<div class="pcontact_us_01">
+{$intro1.content}
+</div>
+</div>
+<!--contactus-->
+</div>
+<!--left_side-->

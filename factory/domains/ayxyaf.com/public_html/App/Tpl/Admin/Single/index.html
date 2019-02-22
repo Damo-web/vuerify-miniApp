@@ -1,0 +1,49 @@
+<include file="Public:header" />
+<body class="main">
+  <div class="subTit">
+                <include file="Public:search1" />
+                <div class="tit">
+                    <a href="javascript:;">单页</a>&gt;<a href="javascript:;">管理单页</a>
+                </div>
+            </div>
+              <div class="content">
+                <div class="tableMod">
+                    <div class="tit">
+                        <a href="__GROUP__/Single/add"><i class="icon icon_add"></i>添加单页</a>
+                        <a href="javascript:;" onClick="batch_del(this, 'Single')"><i class="icon icon_del"></i>删除选中项</a>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="6%"><input type="checkbox" value="" id="check_box" onClick="selectall('id[]');"></th>
+                                <th width="10%">ID</th>
+                                <th width="37%">单页标题</th>
+                                <th width="9%">排序</th>
+                                <th width="15%">添加时间</th>
+                                <th width="14%">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="list" id="vo" empty="$empty">
+                            <tr>
+                                <td align="center"><if condition="$vo.system eq '0'"><input type="checkbox" value="{$vo.id}" name="id[]"><else /><input type="hidden" value="{$vo.id}"></if></td>
+                                <td align="center"><span class="col_ccc">{$vo.id}</span></td>
+                                <td><a href="__ROOT__/custom/{$vo.id}" target="_blank">{$vo.title}</a>({$vo.title_en})</td>
+                                <td align="center" class="order">{$vo.order}</td>
+                                <td align="center"><span class="col_ccc">{$vo.time}</span></td>
+                                <td align="center" class="op">
+                                	<a href="__GROUP__/Single/edit/id/{$vo.id}"><i class="icon icon_edit"></i>修改</a>
+                                <if condition="$vo.system eq '0'">
+                                    <a href="javascript:;" onClick="del(this,'Single',{$vo.id})";><i class="icon icon_x"></i>删除</a>
+                                </if>
+                                </td>
+                            </tr>
+                        </volist>
+                        </tbody>
+                    </table>
+                    <div class="page">{$page}</div>
+                </div>
+                <!-- End tableMod -->
+	</div>
+</body>
+</html>

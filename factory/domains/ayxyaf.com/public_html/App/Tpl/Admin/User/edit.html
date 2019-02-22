@@ -1,0 +1,45 @@
+<tagLib name="html"/>
+<include file="Public:header" />
+<body class="main">
+<div class="content">
+    <div class="formMod">
+        <div class="tit">{$title_type}用户</div>
+        <form name="form1" class="validform" enctype="multipart/form-data" method="post" action="">
+            <ul>
+                <li>
+                    <label for="title">用户名：</label>
+                    <div class="item_cont">
+                        <if condition="$info.username eq ''">
+                            <input type="text" class="txt" name="username" size="35" value="" datatype="s5-15" ajaxurl="__GROUP__/User/ajaxValidUser.php?myparam=value" placeholder="请输入5-15个字符" sucmsg="用户名验证通过！" nullmsg="请输入用户名！" errormsg="用户名至少5个字符,最多15个字符！"/>
+                        <else/>
+                            <input type="text" class="txt"  name="username" size="35" value="{$info.username}" readonly="readonly"/>
+                        </if>                        
+                    </div>
+                </li>
+                <li>
+                    <label for="img">密码：</label>
+                    <div class="item_cont">
+                        <input type="password" class="txt" name="password" size="35" placeholder="请输入密码" value="" datatype="*5-15"nullmsg="请设置密码！" errormsg="密码范围在5~15位之间！"/>
+                    </div>
+                </li>
+                <li>
+                    <label for="keywords">重复密码：</label>
+                    <div class="item_cont">
+                        <input type="password" class="txt" name="repassword" size="35" placeholder="请重复密码" value="" recheck="password" datatype="*" nullmsg="请再输入一次密码！"  errormsg="您两次输入的账号密码不一致！"/>
+                    </div>
+                </li>
+                <li class="push">
+                    <div class="item_cont">
+                        <if condition="$info.id neq ''">
+                            <input type="hidden" name="id" value="{$info.id}" />
+                        </if>
+                        <input type="submit" class="submit" value="提&nbsp;交" />
+                        <input type="reset" class="reset" value="重&nbsp;置" />
+                    </div>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+</body>
+</html>

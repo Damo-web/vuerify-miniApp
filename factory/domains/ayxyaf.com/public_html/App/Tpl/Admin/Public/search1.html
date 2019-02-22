@@ -1,0 +1,23 @@
+<tagLib name="html"/>
+<div class="query">
+	<form action="__GROUP__/{$action}/search" method="post" id="form1">
+        <label>信息检索：<input type="text" class="txt" name='{$search.value}' id="search" value="{$set_title}"/></label>
+        {$input_hidden}
+        <button class="submit icon icon_search" type="submit"></button>
+    </form>
+</div>
+
+<script type="text/javascript" language="javascript">
+	$(function(){
+		$("#form1").submit(function ()
+        {
+			var ss = $('#search').val();
+			if(ss.trim() == '')
+            {
+				alert('请输入检索条件');
+				$("#search").focus();
+				return false;
+			}
+		});
+	});
+</script>

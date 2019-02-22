@@ -1,0 +1,72 @@
+<tagLib name="html"/>
+<include file="Public:header" />
+<body class="main">
+            </div>
+            <div class="content">
+                <div class="formMod">
+                    <div class="tit">添加配置项</div>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <ul>
+                            <li>
+                                <label for="newsSort">显示名称：</label>
+                                <div class="item_cont">
+                                    <input type="text" class="txt" id="name" name="name" size="35" value="{$info.name}" />
+                                </div>
+                            </li>
+                            <li>
+                                <label for="newsSort">键值：</label>
+                                <div class="item_cont">
+                                    <input type="text" class="txt" id="key" name="key" size="35" value="{$info.key}" />
+                                </div>
+                            </li>
+                            <li>
+                                <label for="newsSort">值：</label>
+                                <div class="item_cont">
+                                    <input type="text" class="txt" id="value" name="value" size="35" value="{$info.value}" />
+                                </div>
+                            </li>
+                            <li>
+                                <label for="newsSort">类型：</label>
+                                <div class="item_cont">
+                                    <select name="type" id="type" class="txt">
+										<option value="text" <if condition="$info.type eq 'text'">selected</if> >文本域</option>
+										<option value="textarea" <if condition="$info.type eq 'textarea'">selected</if>>文本区域</option>
+										<option value="checkbox" <if condition="$info.type eq 'checkbox'">selected</if>>复选框</option>
+										<option value="select" <if condition="$info.type eq 'select'">selected</if>>下拉列表</option>
+										<option value="file" <if condition="$info.type eq 'file'">selected</if>>文件域</option>
+										<option value="radio" <if condition="$info.type eq 'radio'">selected</if>>单选框</option>
+										<option value="xheditor" <if condition="$info.type eq 'xheditor'">selected</if>>富文本编辑框</option>
+									</select>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="newsSort">选项值：</label>
+                                <div class="item_cont">
+                                    <input type="text" class="txt" id="options" name="options" size="35" value="{$info.options}" />
+                                </div>
+                            </li>
+                            <li>
+                                <label for="newsSort">分组:</label>
+                                <div class="item_cont">
+                                    <select name="group_id" id="group_id" class="txt">
+										<option value="0" <if condition="$info.group_id eq '0'">selected</if> >系统内部</option>
+										<option value="1" <if condition="$info.group_id eq '1'">selected</if>>系统设置</option>
+										<option value="2" <if condition="$info.group_id eq '2'">selected</if>>智能标签</option>
+									</select>
+                                </div>
+                            </li>
+                            <li class="push">
+                                <div class="item_cont">
+                                 <if condition="$info.id neq ''">
+                                 	<input type="hidden" id="id" name="id" value="{$info.id}" />
+                                 </if>
+                                    <input type="submit" class="submit" value="提&nbsp;交" />
+                                    <input type="reset" class="reset" value="重&nbsp;置" />
+                                </div>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+</body>
+</html>

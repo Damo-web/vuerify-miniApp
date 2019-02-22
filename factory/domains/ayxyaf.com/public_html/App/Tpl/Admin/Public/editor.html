@@ -1,0 +1,20 @@
+<script type="text/javascript" charset="utf-8" src="../Public/Js/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="../Public/Js/ueditor/ueditor.all.min.js"> </script>
+<script type="text/javascript">	
+	$(function(){
+		// 设置编辑器宽高
+		$('textarea#content').css({
+			"width": '649px',
+			"height": '300px'
+		});
+		// 初始化编辑器
+		UE.getEditor('content', {
+			serverUrl:"__APP__/Admin/Ueditor/",
+		    toolbars: [["fullscreen","source","undo","redo","cleardoc","removeformat","formatmatch","pasteplain","drafts","autotypeset","template","simpleupload","insertimage","insertvideo","attachment","link","|","inserttable","mergeright","mergedown","splittorows","splittocols","mergecells","|","preview","searchreplace","help","|"],["bold","italic","underline","fontfamily","fontsize","forecolor","backcolor","insertunorderedlist","insertorderedlist","indent","paragraph","|","justifyleft","justifycenter","justifyright","justifyjustify","lineheight"]],
+		    autoHeightEnabled: false,
+		    autoFloatEnabled: false,
+		    imageScaleEnabled:false,
+		    wordCount:false
+		});
+	})
+</script>

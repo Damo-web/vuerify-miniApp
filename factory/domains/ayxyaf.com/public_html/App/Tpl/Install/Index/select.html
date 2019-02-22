@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="{$url}css/common.css" />
+<link rel="stylesheet" type="text/css" href="{$url}css/step3.css" />
+<script charset="utf-8" src="{$root_dir}/App/Tpl/Admin/Public/Js/jquery.js"></script>
+<style type="text/css">
+.mark{color: red;margin-right: 5px;}
+.qt li{font-size: 14px;font-weight: normal;border-bottom: none !important;height: 35px !important;}
+.qt li a{color: #1758aa;text-decoration: none;	}
+.qt label{display: inline-block;width: 120px;text-align: right;font-size: 14px;margin-right: 5px;}
+.qt li select{font-size: 14px;margin-left: 0px;}
+.qt .input{float: none !important;width: 200px;height: 20px;line-height: 20px;}
+</style>
+<title>检测服务器环境</title>
+</head>
+<body>
+	<div class="header">
+    	<div class="comtent">
+        	<img class="logo" src="{$url}img/logo.png" />
+            <div class="head_name">安装向导</div>
+        </div>
+    </div>
+    <div class="step">
+    	<img src="{$url}img/step3.png" />
+    </div>
+    <div class="middle">
+    	<div class="middle_comtent">
+    		<form action="" id="myForm" method="POST">
+	        	<div class="info">
+	            	<div class="tit_name2">请选择需要安装的栏目<span class="explain">根据网站的运作情况，选择适合的网站栏目</span></div>
+	
+	                <ul>
+	                	<li><input type="checkbox" name="switch_introduction" value="1" checked disabled=true /><div class="lanmu">公司简介</div><div class="fuwuqi">展示企业概况、文化愿景</div></li>
+	                	<li><input type="checkbox" name="switch_news" value="1" checked disabled=true /><div class="lanmu">新闻中心</div><div class="fuwuqi">发布企业或者行业的新闻</div></li>
+	                	<li><input type="checkbox" name="switch_product" value="1" checked disabled=true /><div class="lanmu">产品展示</div><div class="fuwuqi">展示企业的产品，让更多的人了解我们的产品</div></li>
+	                    <li><input type="checkbox" name="switch_contactus" value="1" checked disabled=true /><div class="lanmu">联系我们</div><div class="fuwuqi">让客户更方便的可以联系到自己</div></li>
+	                    <li><input type="checkbox" name="switch_order"  checked value="1" /><div class="lanmu">在线订单</div><div class="fuwuqi">实现在线提交订单的功能，让交易随时随地</div></li>
+	                    <li><input type="checkbox" name="switch_message" checked value="1" /><div class="lanmu">在线留言</div><div class="fuwuqi">接受客户提问，了解客户需求</div></li>
+	                    <li><input type="checkbox" name="switch_jobs" checked value="1" /><div class="lanmu">人才招聘</div><div class="fuwuqi">在线招聘应聘，为企业增加新的人才储备</div></li>
+	                </ul>
+	                <div class="tit_name2">请选择网站风格包
+						<select name="style" id="style">
+							<option value="Default">建筑</option>
+							<option value="jx">机械</option>
+							<option value="kj">科技</option>
+							<option value="sp">食品</option>
+							<option value="zz">种植</option>
+						</select>
+	                	<span class="explain">根据网站的运作情况，选择适合的网站风格</span>
+	                </div>
+	                <div class="tit_name2">手机端网站						
+	                	<span class="explain"><input type="checkbox" id="qt_reg" value="1" checked name="qt_reg" style="float:none;"/> <b style="color:#1758aa;font-size:16px;font-weight:normal;">开通QFTouch</b> 为了保证手机端更多功能和体验，请注册对接QFTouch平台。 </span>
+		                <ul class="qt">
+		                	<li><label><span class="mark">*</span>开户地区</label>
+		                		<select class="" name="qt[aid]" id="aid">
+                                    <option value="">请选择</option>
+                                    <option value="1">新乡</option>
+                                    <option value="2">洛阳</option>
+                                    <option value="3">安阳</option>
+                                    <option value="4">焦作</option>
+                                    <option value="5">聚创</option>
+                                    <option value="6">常州</option>
+                                    <option value="7">连云港</option>
+                                    <option value="8">泰州</option>
+                                    <option value="9">浙江</option>
+                                </select>
+                                <span class="explain">请正确选择开户地区</span>
+                            </li>
+		                	<li><label><span class="mark">*</span>账号/二级域名</label><input type="text" class="input" placeholder="请填写6到16位字符" name="qt[username]" id="username" /> .qftouch.com</li>
+		                	<li><label><span class="mark">*</span>登录密码</label><input type="text" class="input" placeholder="请填写6到20位任意字符" name="qt[password]" id="password" /></li>
+		                	<li><label><span class="mark">*</span>网站模版</label><input type="text" class="input" placeholder="请填写模板数字编号" name="qt[style]" id="moban" /> 填入模板数字编号 <a href="javascript:;" onclick="window.open('http://www.qftouch.com/template.html')">查看模板列表</a></li>
+		                </ul>
+	                </div>
+	                <div class="but_box">
+	                	<div class="but_r" style="float:left"><a href="__GROUP__/Index/Config">上一步</a></div>
+	                    <div class="but_r"><a href="javascript:;" id="next">下一步</a></div>
+	                </div>
+	            </div>
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+    	<div class="comtent">
+    		<div class="copyright">河南青峰网络科技有限公司版权所有 © 2002-2015 All Rights Reserved.</div>
+    	</div>
+    </div>
+</body>
+<script type="text/javascript">
+$(function(){
+	$("#next").click(function(){
+		var qt_check = true;
+		if ($('#qt_reg').is(':checked')) {	
+			if ($('#aid').val()=='') {
+				qt_check = false;
+				alert('请选择开户地区');
+				$('#aid').focus();
+				return false;
+			}
+			if ($.trim($('#username').val())=='') {
+				qt_check = false;
+				alert('请填写账号/二级域名'); 
+				$('#username').focus();
+				return false;
+			}
+			if ($.trim($('#username').val()).length<6 || $.trim($('#username').val()).length>16) {
+				alert("请填写6到16位字符");
+				$('#username').focus();
+				return false;
+			}
+			if (/^(?!-)(?!.*?-$)(?!.*?-{2,}.*?)[a-zA-Z0-9-]+$/.test($.trim($('#username').val())) == false) {
+				alert("账号/二级域名格式不正确，只能输入英文、数字、-等字符，-不能在首尾并且不能连续出现");
+				$('#username').focus();
+				return false;
+			}
+			if ($.trim($('#password').val())=='') {
+				qt_check = false;
+				alert('请填写登录密码');
+				$('#password').focus();
+				return false;
+			}
+			if ($.trim($('#password').val()).length<6 || $.trim($('#password').val()).length>20) {
+				alert("请填写6到20位任意字符");
+				$('#password').focus();
+				return false;
+			}
+			if ($.trim($('#moban').val())=='') {
+				qt_check = false;
+				alert('请填写网站模版');
+				$('#moban').focus();
+				return false;
+			}
+			if (/\d+/.test($.trim($('#moban').val())) == false) {
+				qt_check = false;
+				alert('请填写模版数字编号');
+				$('#moban').focus();
+				return false;
+			};
+		};
+		if(qt_check && confirm('选择后，无法修改！'))
+		{
+			$("#myForm").submit();	
+		}
+	});
+	$('#qt_reg').change(function() {
+		if ($(this).is(':checked')) {
+			$('.qt').show();
+		}else{
+			$('.qt').hide();
+		};
+	});
+});
+</script>
+</html>

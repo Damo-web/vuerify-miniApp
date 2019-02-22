@@ -1,0 +1,22 @@
+<div class="picScroll-left">
+ <div class="hd">
+				<a class="next"></a>
+				<ul></ul>
+				<a class="prev"></a>
+ </div>
+<div class="bd">
+				<ul>
+                  <volist name="in_case" id="vo">
+                            <li>
+                               <p class="switch_Scroll_p1"><a href="__APP__/product/{$vo.pid}_{$vo.id}" title="{$vo.title}"><if condition="$vo.img neq ''"><img src="__ROOT__/__UPLOAD__/m_{$vo.img}" alt="{$vo.title}"/><else /><img src="__TMPL__Public/images/wt.jpg" alt=""/></if></a></p>
+                               <p class="switch_Scroll_p2"><a href="__APP__/product/{$vo.pid}_{$vo.id}"  title="{$vo.title}">{$vo.title|msubstr=0,10,'utf-8',false}</a></p> 
+                          </li>
+                        </volist>
+               
+</ul>
+			</div>
+       
+		</div>
+		<script type="text/javascript">
+		jQuery(".picScroll-left").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:3,scroll:1,trigger:"click"});
+		</script>

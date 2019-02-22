@@ -1,0 +1,142 @@
+<tagLib name="html"/>
+<include file="Public:header" />
+<include file="Public:editor" />
+<script type="text/javascript">
+    $(function(){
+        $("#delpic").click(function (){
+            if(confirm('确认删除？')){
+                var picid=$("#id").val();
+                $.get("__GROUP__/Category/delpic",{id:picid},function (data){
+                    if(data == 1){
+                        alert('删除图片成功！');
+                    }else if(data == 0){
+                        alert('删除图片失败！');
+                    }
+                    window.location.reload();
+                })
+            }       
+        })
+    })
+</script>
+<script type="text/javascript" language="javascript">
+
+   $(function(){
+        $("#parent1").change(function(){
+            var checkValue = $('#parent1').val();
+            var oldValue = $('#id').val();
+            $.get("__GROUP__/Category/change",{id:oldValue,change_id:checkValue},function (data){
+                //alert(data);
+                if(data == 1){
+                    alert('父级类别不能选择自己的子类别！');
+                    window.location.reload();
+                }
+            })
+        });
+   })
+</script>
+<body class="main">
+    <div class="subTit">
+                
+                <div class="tit">
+                    <a href="javascript:;">{$column}</a>&gt;<a href="javascript:;">{$title}</a>
+                </div>
+            </div>
+            <div class="content">
+                <div class="formMod">
+                    <div class="tit">{$title}</div>
+                    <form action="" enctype="multipart/form-data" method="post" class="validform">
+                        <ul>
+                            <li>
+                                <label for="parent">父级分类：</label>
+                                <if condition='$edit_type eq 1'>
+                                <div class="item_cont">
+                                    <html:select options='parent' selected='sele' name="parent" id="parent1" style="txt" />
+                                </div>
+                                <else />
+                                <div class="item_cont">
+                                    <html:select options='parent' selected='sele' name="parent" id="parent"  style="txt" />
+                                </div>
+                                </if>
+                            </li>
+                            <li>
+                                <label for="name">分类名称：</label>
+                                <div class="item_cont">
+                                <if condition="$info.id eq 6">
+									<input type="text" class="txt" id="name" name="name" datatype="*" nullmsg="请填写分类名称" size="35" value="{$info.name}" readonly/>
+								<else />
+                                    <input type="text" class="txt" id="name" name="name" datatype="*" nullmsg="请填写分类名称" size="35" value="{$info.name}" />
+								</if>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="title_en">英文名称：</label>
+                                <div class="item_cont">
+                                <input type="text" class="txt" id="title_en" name="title_en" size="35" value="{$info.title_en}" /><span style="color:#CCC">（选填，用于显示内页英文）</span>
+                                </div>
+                            </li>
+                             <li>
+                            	<label for="title">分类所属：</label>
+                            	<div class="item_cont">
+                                    <input type="text" class="txt" id="upclass" name="upclass" style="width:100px;" value="{$info.upclass}" /><span style="color:#CCC">（选填，用于内页左侧）</span>
+                            	</div>
+                            </li>
+                            <li>
+                                <label for="newsImg">分类图片：</label>
+                                <div class="item_cont">
+                                    <input type="file" class="txt" class="img" name="img" size="35" class="txt"/>
+                                    <if condition='$info.img neq ""'>
+                                    <a href="__ROOT__/<?php echo C('UPLOAD_DIR'); ?>{$info.img}" target="_black">查看图片</a> <a href="javascript:;" id="delpic">删除图片
+                                    </a>
+                                    </if>
+                                </div>
+                            </li>
+                             <li>
+                            <label for="style">展示方式：</label>
+                            <div class="item_cont radio_smart" style="line-height:30px;">
+                            <div class="article_list"><input type="radio" name="style" value="0" <if condition="$info.style eq '0'">  checked="checked" </if> >文章列表</div>                            
+                            <div class="article_img_list"><input type="radio" name="style" value="1" <if condition="$info.style eq '1'">  checked="checked" </if>>图片文章混排</div>
+                            <div class="img_list"><input type="radio" name="style" value="2" <if condition="$info.style eq '2'">  checked="checked" </if>>图片形式</div>
+                            <div class="img_list" style="background:none; width:100px !important;"><input type="radio" name="style" value="3" <if condition="$info.style eq '3'">  checked="checked" </if>>单页形式</div>
+                            </div>
+                        	</li>
+                            <li>
+                                <label for="keywords">关键词：</label>
+                                <div class="item_cont">
+                                    <input type="text" class="txt" id=keywords name="keywords" style="width:637px;" value="{$info.keywords}" />
+                                </div>
+                            </li>
+                            <li>
+                                <label for="Description">分类描述：</label>
+                                <div class="item_cont">
+                                    <textarea name="description" id="description" style="width:637px;" rows="10" class="txt"  >{$info.description}</textarea>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="content">分类内容：</label>
+                                <div class="item_cont">
+                                    <textarea name="content" id="content" style="width:637px;" >{$info.content}</textarea>
+                                </div>
+                            </li>                           
+                            <li>
+                                <label for="order">排序：</label>
+                                <div class="item_cont">
+                                    <input type="number" id="order" name="order"  min="0" max="99999" step="1" placeholder="<if condition="$info.order neq ''">{$info.order}<else />0</if>" value="{$info.order}" class="txt"/>
+                                </div>
+                            </li>
+                            <li class="push">
+                                <div class="item_cont">
+                                <if condition="$info.id neq ''">
+                                    <input type="hidden" id="id" name="id" value="{$info.id}" />
+                                    <input type="hidden" id="img" name="img" value="{$info.img}" />
+                                    <input type="hidden" id="type" name="type" value="{$info.type}" />
+                                </if>
+                                    <input type="submit" class="submit" value="提&nbsp;交" />
+                                    <input type="reset" class="reset" value="重&nbsp;置" />
+                                </div>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+</body>
+</html>

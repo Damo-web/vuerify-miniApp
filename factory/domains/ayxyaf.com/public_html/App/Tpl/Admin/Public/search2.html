@@ -1,0 +1,24 @@
+<tagLib name="html"/>
+<div class="query">
+	<form action="__GROUP__/{$action}/search" method="post" id="form1">
+        <label>信息检索：产品名称：<input type="text" class="txt" name='ptitle' id="ptitle" value="{$ptitle}"/>订单姓名：<input type="text" class="txt" name='name' id="name" value="{$name}"/></label>
+        {$input_hidden}
+        <button class="submit icon icon_search" type="submit"></button>
+    </form>
+</div>
+
+<!--<script type="text/javascript" language="javascript">
+	$(function(){
+		$("#form1").submit(function ()
+        {
+			var ss = $('#ptitle').val();
+			var ss1 = $('#name').val();
+			if(ss.trim() == '' && ss1.trim() == '' )
+            {
+				alert('请输入检索条件');
+				$("#ptitle").focus();
+				return false;
+			}
+		});
+	});
+</script>-->

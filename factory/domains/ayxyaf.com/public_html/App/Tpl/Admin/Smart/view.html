@@ -1,0 +1,84 @@
+<tagLib name="html" />
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+	<title>引用页</title>
+    <load href="../Public/Css/reset.css" />
+	<load href="../Public/Css/base.css" />
+	<load href="../Public/Js/jquery.js" />
+<load href="../Public/Js/ace.js" />
+
+</head>
+
+<style>
+  #editor {
+        position: relative;
+        width: 900px;
+        height: 150px;
+		margin-bottom: 50px;
+    }
+</style>
+<script type="text/javascript">	
+var jq=$.noConflict();  //jq冲突
+jq(document).ready(function(){
+	//jq()
+	jq("input[type=radio]").click(function(){
+		jq("input[type=radio]").parent().parent().removeClass('selected');
+		var cur = jq(this).parent().parent();
+		jq(this).parent().parent().addClass('selected');
+		var id = jq(this).val();
+		jq.getJSON("__ROOT__/Admin/Smart/ajax/t/tag/id/"+id, function(data){
+			if(data.status == '1')
+			{
+
+				//jq('#editor').html(data.data);
+				var editor = ace.edit("editor");
+				editor.setValue(data.data); // or session.setValue
+				//editor.gotoLine(1);
+				editor.session.getLength();
+
+			}
+		})
+	});
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/tomorrow");
+	editor.getSession().setMode("ace/mode/html");
+	editor.session.getLength();
+	//editor.setReadOnly(true);
+})
+</script>
+
+<body class="main">
+<div class="subTit">
+    <div class="tit">
+       <a href="javascript:;">Smart</a>&gt;<a href="javascript:;">Smart标签</a>
+    </div>
+</div>
+<div class="content">
+<div class="formMod">
+<div class="tit">Smart标签</div>
+	<form >
+	<ul>
+		<li>
+			<label for="newsSort">展示方式： </label>
+			<div class="item_cont radio_smart">
+				<volist name="smart_list" id="vo" key="key" empty="$empty">
+					<label for="{$vo.id}" class="{$vo.key} <if condition="$key eq '1'">selected</if>"><div><input type="radio" name="smart" value="{$vo.id}" id="{$vo.id}" <if condition="$vo.key eq 'article_list'">checked</if> > {$vo.name}</div></label>
+				</volist>
+			</div>
+		</li>
+		</li>
+		<li>
+			<label for="newsSort">代码：</label>
+			<div class="item_cont" id="editor"  >{$info.value|htmlspecialchars}</div>
+		</li>
+
+	</ul>	
+	</form>
+
+	
+</div>
+</div>
+</body>
+</html>

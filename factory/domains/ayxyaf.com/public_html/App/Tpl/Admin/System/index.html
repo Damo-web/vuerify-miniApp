@@ -1,0 +1,74 @@
+<tagLib name="html"/>
+<include file="Public:header" />
+<body class="main">
+ 	<div class="subTit">
+      <div class="tit">
+          <a href="javascript:;">系统</a>&gt;<a href="javascript:;">系统设置</a>
+      </div>
+      </div>
+      <div class="content">
+          <div class="formMod">
+              <div class="tit"><a href="__GROUP__/System/Index/t/1" <if condition="$group eq '1'">class="current"</if>>基础设置 </a><a href="__GROUP__/System/Index/t/4" <if condition="$group eq '4'">class="current"</if>>高级设置</a><a href="__GROUP__/System/Index/t/3">地图设置</a></div>
+              <form action="" method="post"  enctype="multipart/form-data">
+                  <ul>
+                   <volist name="list" id="vo" empty="$empty">
+                       <li>
+                          <label for="{$vo.key}">{$vo.name}：</label>
+                          <if condition="$vo.key eq 'web_url'">
+                            <div class="item_cont">
+                              {$vo.input}
+                            </div>
+                          <elseif condition="$vo.key eq 'mobile'" />
+                            <div class="item_cont">
+                              {$vo.input}
+                            </div>
+                          <elseif condition="$vo.key eq 'tel'" />
+                            <div class="item_cont">
+                              {$vo.input}
+                            </div>
+                          <elseif condition="$vo.key eq 'fax'" />
+                            <div class="item_cont">
+                              {$vo.input}
+                            </div>
+                          <else />
+                            <div class="item_cont">
+                             	{$vo.input}
+                            </div>
+                          </if>
+                       </li>
+                   </volist>
+                   <li class="push">
+                       <div class="item_cont">
+                       <if condition="$info.id neq ''">
+                       	<input type="hidden" id="id" name="id" value="{$info.id}" />
+                       	<input type="hidden" id="type" name="type" value="{$info.type}" />
+                      	</if>
+                           <input type="submit" class="submit" value="提&nbsp;交" />
+                           <input type="reset" class="reset" value="重&nbsp;置" />
+                       </div>
+                   </li>
+                  </ul>
+              </form>
+          </div>
+      </div>
+</body>
+</html>
+<script type="text/javascript" language="javascript">
+    $(function(){
+        $("#form1").submit(function ()
+        {
+            var ss = $('#web_url').val();        
+            if(ss.trim() == '')
+            {
+                alert('请输入网址URL');
+                $("#web_url").focus();
+                return false;
+            }
+            if(ss.trim() != '' && ss.trim().indexOf('http://') == -1){
+                alert('请在网址前网址加“ http:// ”');
+                $("#web_url").focus();
+                return false;
+            }
+        });
+    });
+</script>

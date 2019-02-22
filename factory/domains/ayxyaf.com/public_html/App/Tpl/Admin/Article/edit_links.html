@@ -1,0 +1,88 @@
+<tagLib name="html"/>
+<include file="Public:header" />
+<script type="text/javascript">
+	$(function(){
+        $(".delpic_1").click(function (){
+
+            if(confirm('确认删除？')){
+                var picid=$("#id").val();
+                $.get("__GROUP__/Article/delpic_1",{id:picid},function (data){
+                    if(data == 1){
+                        alert('删除图片成功！');
+                    }else if(data == 0){
+                        alert('删除图片失败！');
+                    }
+                    window.location.reload();
+                })
+            } 
+        })
+        
+    });        
+</script>
+<body>
+ 	<div class="subTit">
+                <div class="tit">
+                    <a href="javascript:;">系统</a>&gt;<a href="javascript:;">{$title_type}链接</a>
+                </div>
+            </div>
+            <div class="content">
+                <div class="formMod" style="red;margin-bottom:349px;">
+                    <div class="tit">{$title_type}链接</div>
+                    <form name="form1" class="validform" enctype="multipart/form-data" method="post" action="">
+                        <input type="hidden" id="p" name="p" value="{$p}" />
+                        <ul>
+                            <li>
+                                <label for="title">链接标题：</label>
+                                <div class="item_cont">
+                                    <input type="text" class="txt required" id="title" placeholder="在此输入链接标题" name="title" datatype="*" nullmsg="请填写链接标题！" style="width:637px;" value="{$info.title}" />
+                                </div>
+                            </li>
+                            <li>
+                                <label for="img">链接图片：</label>
+                                <div class="item_cont">
+                                    <div>
+                                    <input type="file" class="txt" id="img" name="img" size="35" style="*margin-left:0px;"/>
+                                    <if condition="$info.img neq ''"> <img src="__ROOT__/<?php echo C('UPLOAD_DIR'); ?>{$info.img}" width="30" height="20"/> <a href="__ROOT__/<?php echo C('UPLOAD_DIR'); ?>{$info.img}" target="_black">查看图片</a> <a href="javascript:;" class="delpic_1">删除图片</a></if>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="content">链接地址：</label>
+                                <div class="item_cont">
+                                    <input type="text" class="txt" id="content" placeholder="http://" datatype="url" nullmsg="请输入链接地址！" errormsg="请输入正确的链接地址！" name="content" style="width:637px;" value="{$info.content}" />
+                                </div>
+                            </li>
+                            <li>
+                                <label for="order">排序：</label>
+                                <div class="item_cont">
+                                    <input type="number" id="order" name="order"  min="0" max="99999" step="1" placeholder="<if condition="$info.order neq ''">{$info.order}<else />0</if>" value="{$info.order}" class="txt"/>
+                                </div>
+                            </li>
+                            <li class="push">
+                                <div class="item_cont">
+                                 <if condition="$info.id neq ''">
+                                 	<input type="hidden" id="id" name="id" value="{$info.id}" />
+                                    <input type="hidden" id="img" name="img" value="{$info.img}" />
+                                    <input type="hidden" id="keywords" name="keywords" value="{$info.keywords}" />
+                                    <input type="hidden" id="description" name="description" value="{$info.description}" />
+                                    <input type="hidden" id="time" name="time" value="{$info.time}" />
+                                    <input type="hidden" id="click" name="click" value="{$info.click}" />
+                                </if>
+                                <if condition="$l_id eq 6">
+                                    <input type="hidden" id="pid" name="pid" value="{$l_id}" />
+                                </if>
+                                <if condition="$info.pid neq ''">
+                                    <input type="hidden" id="pid" name="pid" value="{$info.pid}" />
+                                </if>
+                                    <input type="submit" class="submit" value="提&nbsp;交" />
+                                    <input type="reset" class="reset" value="重&nbsp;置" />
+                                </div>
+                            </li>
+                            
+                        </ul>
+                    </form>
+                    <div style="margin-bottom:10px;"></div>
+                </div>
+            </div>
+</body>
+</html>

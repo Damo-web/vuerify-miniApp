@@ -1,0 +1,65 @@
+<style>
+    #layer table td{padding:10px 5px;}    
+</style>
+<div style="display:none">
+    <div id="layer">
+        <form class="validform" action="__URL__/move" method="post">
+            <table id="move_category" width="100%">
+                <tbody>
+                    <tr height="28">
+                        <td width="80">目标栏目：</td>
+                        <td>
+                            <select name="totype" datatype="n" id="pid" class="txt" style="width:96%">
+                                <option value="">请选择移动到的位置...</option>
+                                <volist name="category" id="cg" empty="$empty">
+                                    <option value="{$key}">{$cg}</option>
+                                </volist>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr height="32">
+                        <td width="80">列表ID：</td>
+                        <td>
+                            <input id="ids" type="text" name="ids" value="" class="txt" readonly="readonly" style="width:93%">
+                        </td>
+                    </tr>
+                    <tr height="32">
+                        <td colspan="2" align="center" style="height: 27px\9;">
+                            <input type="submit" value="确&nbsp;定" style="width: 44px; height: 25px; cursor:pointer;">&nbsp;&nbsp;
+                            <input type="button" id="closeLayer"  value="取&nbsp;消" style="width: 44px; height: 25px; cursor:pointer;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+<load href="../Public/Js/fancybox/jquery.fancybox-1.3.4.js" />
+<load href="../Public/Js/fancybox/jquery.fancybox-1.3.4.css" />
+<script type="text/javascript">    
+    $(function() {
+        $('#tipLayer').fancybox({
+            'width':480,
+            'height':180,
+            'autoDimensions':false,
+            'showCloseButton':false,
+            'hideOnOverlayClick':false,
+            onStart:function(){
+                ids = check_select('请选择要移动的内容！');
+                if(ids == false) { return false; }
+                $("#ids").val(ids);
+                $('.Validform_checktip ').show();
+            },
+            onClosed:function(){
+                $('.Validform_checktip ').hide();
+            }
+        });
+    });
+    $('.validform #pid').change(function () {
+        $(this).blur();
+    })
+    $('#closeLayer').click(function() {
+        $.fancybox.close();
+    });
+    
+</script>

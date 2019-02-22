@@ -1,0 +1,13 @@
+<tagLib name="html"/>
+<div class="query">
+	<form action="__GROUP__/{$action}/search" method="post" id="form1">
+	<label>按类别检索：<html:select options='category' selected='selected_id' name="pid" id="pid" style="txt" />
+    </label>
+        <label>按标题名称检索： <input type="text" class="txt" name='{$search.value}' id="search" value="{$set_title}"/></label>
+        {$input_hidden}
+        <button class="submit icon icon_search" type="submit"></button>
+    </form>
+</div>
+
+
+
