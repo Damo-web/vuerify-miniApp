@@ -1,6 +1,0 @@
-User-agent: *
-Disallow: /App/Tpl/Admin/
-Disallow: /App/Tpl/Install/
-Disallow: App/Tpl/Home/Default/custom
-
-Sitemap: http://www.ayxyaf.com/sitemap.xml
